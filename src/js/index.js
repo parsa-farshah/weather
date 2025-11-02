@@ -4,8 +4,15 @@ let $btnDarkLight = document.getElementById("btnDarkLight");
 let $btnDarkLightWrapper = document.getElementById("btnDarkLightWrapper");
 let $body = document.querySelector("body");
 
+// location logo select
+let $shadowBlack = document.querySelector("#shadowBlack");
+let $locationBlack = document.querySelector("#locationBlack");
+let $locationWhite = document.querySelector("#locationWhite");
+let $shadowWhite = document.querySelector("#shadowWhite");
+
 $btnDarkLight.addEventListener("click", () => {
-  $btnDarkLightWrapper.classList.toggle("bg-black/60");
+  $btnDarkLightWrapper.classList.toggle("bg-[#ececec]");
+  $btnDarkLightWrapper.classList.toggle("bg-[#222222f6]");
 
   $btnDarkLight.classList.toggle("left-[78%]");
   $btnDarkLight.classList.toggle("left-[22%]");
@@ -20,5 +27,12 @@ $btnDarkLight.addEventListener("click", () => {
   //   body
   $body.classList.toggle("bg-black");
   $body.classList.toggle("text-white");
-//   $body.classList.toggle("bg-white");
+
+  //   logo city location color change
+  $shadowBlack.classList.toggle("hidden");
+  $locationBlack.classList.toggle("hidden");
+  $locationWhite.classList.toggle("hidden");
+  $locationWhite.classList.toggle("flex");
+  $shadowWhite.classList.toggle("hidden");
+  $shadowWhite.classList.toggle("flex");
 });

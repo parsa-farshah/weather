@@ -36,3 +36,14 @@ $btnDarkLight.addEventListener("click", () => {
   $shadowWhite.classList.toggle("hidden");
   $shadowWhite.classList.toggle("flex");
 });
+
+async function getData(url) {
+  let data = await fetch(url);
+  let items = await data.json();
+  return items;
+}
+
+function weatherApi() {
+    getData("").then(res => {
+    })
+}

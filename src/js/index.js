@@ -10,6 +10,9 @@ let $loading = document.querySelector("#loading");
 // error search
 let $errorSearch = document.querySelector("#errorSearch");
 
+// error city not found
+let $errorCity = document.querySelector("#errorCity");
+
 // location logo select
 let $shadowBlack = document.querySelector("#shadowBlack");
 let $locationBlack = document.querySelector("#locationBlack");
@@ -74,13 +77,17 @@ $searchBtn.addEventListener("click", () => {
   // input value enter to api url
 
   // cant enter the number or script
-  if ($search.value == "" || $search.value.search(/0-9/)) {
+
+  if ($search.value == "" || $search.value.search(/0-9/) !== -1) {
     $errorSearch.classList.remove("hidden");
     $errorSearch.classList.add("flex");
     setTimeout(() => {
       $errorSearch.classList.remove("flex");
       $errorSearch.classList.add("hidden");
     }, 3000);
+    weatherApi();
+    $search.value = "";
+    $search.focus();
   } else {
     nameCitySearch = $search.value;
     weatherApi();
@@ -93,6 +100,21 @@ function weatherApi() {
   asynAwait(
     `https://api.openweathermap.org/data/2.5/forecast?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
   ).then((result) => {
+    // error city is not found
+    if (result == undefined) {
+      $errorCity.classList.remove("hidden");
+      $errorCity.classList.add("flex");
+
+      setTimeout(() => {
+        $errorCity.classList.remove("flex");
+        $errorCity.classList.add("hidden");
+      }, 2500);
+
+      nameCitySearch = "tehran";
+      weatherApi();
+      return;
+    }
+
     // city add in document
     $city.innerText = "";
     $city.innerText = `${result.city.name}`;

@@ -130,12 +130,12 @@ function weatherApi() {
     // city add in document
     $city.innerText = "";
     $city.innerText = `${result.city.name}`;
-    $city.classList.add("text-3xl", "font-black");
+    $city.classList.add("text-xl", "md:text-3xl", "font-black");
     $cityName.appendChild($city);
 
     // country add in document
     $country.innerText = `${result.city.country}`;
-    $country.classList.add("text-lg", "mt-1.5", "font-black");
+    $country.classList.add("text-sm", "mt-1.5", "font-black", "md:text-lg");
     $cityName.appendChild($country);
 
     // wheater main
@@ -163,6 +163,49 @@ function weatherApi() {
 
     let $tempMaxMinVal = ` ${$tempMax}/${$tempMin}`;
     $tempMaxMin.innerText = $tempMaxMinVal;
+
+    // icons for change weather image
+    let $weatherIcon = result.list[0].weather[0].icon;
+    let $iconCurrent = document.querySelector("#iconCurrent");
+
+    function changeIcon(src) {
+      $iconCurrent.setAttribute("src", src);
+    }
+
+    let $src = "src/icons/200.png";
+
+    switch ($weatherIcon) {
+      case "01d":
+        $src = "src/icons/800.png";
+        break;
+      case "01d":
+        $src = "src/icons/01n.png";
+        break;
+
+      case "02d":
+        $src = "src/icons/02d.png";
+        break;
+      case "02n":
+        $src = "src/icons/02n.png";
+        break;
+      case "03d":
+        $src = "src/icons/801.png";
+        break;
+      case "03n":
+        $src = "src/icons/801.png";
+        break;
+      case "04d":
+        $src = "src/icons/801.png";
+        break;
+      case "04n":
+        $src = "src/icons/801.png";
+        break;
+      default:
+        break;
+    }
+    console.log($src);
+
+    changeIcon($src);
   });
 }
 weatherApi();

@@ -143,7 +143,6 @@ function weatherApi() {
     let $weatherMainval = result.list[0].weather[0].description;
 
     $weatherMain.innerText = $weatherMainval;
-    console.log(result);
 
     // main temp
     let $mainTempHtml = document.querySelector("#mainTemp");
@@ -155,12 +154,20 @@ function weatherApi() {
     let $feelsLikeVal =
       "Feels Like " + Math.round(result.list[0].main.feels_like) + "°";
     $feelsLike.innerText = $feelsLikeVal;
-    console.log($feelsLikeVal);
 
+    // temp max min
+    let $tempMaxMin = document.querySelector("#tempMaxMin");
     console.log(result);
+    let $tempMin = Math.round(result.list[0].main.temp_min) + "°";
+    let $tempMax = Math.round(result.list[0].main.temp_max) + "°";
+
+    let $tempMaxMinVal = ` ${$tempMax}/${$tempMin}`;
+    $tempMaxMin.innerText = $tempMaxMinVal;
   });
 }
 weatherApi();
+
+// add date
 let $currentDateWrapper = document.querySelector("#currentDateWrapper");
 let $date = new Date();
 let $currentDate = `${

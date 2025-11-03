@@ -147,7 +147,7 @@
         </div>
         <!-- current weather -->
         <div
-          class="w-[90%] relative h-[186px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-6 px-[5%] flex"
+          class="w-[90%] relative h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-24 md:mt-6 px-[5%] flex justify-between duration-300"
         >
           <!-- left side -->
           <div class="w-1/2 h-full pt-20">
@@ -165,18 +165,23 @@
             </h6>
           </div>
           <!-- right side -->
-          <div>
+          <div class="w-[40%] flex flex-col items-end">
             <!-- temp -->
             <h3
               id="mainTemp"
-              class="font-extrabold text-transparent text-[75px] bg-gradient-to-t from-[#6753AF] from-5% to-95% to-[#FFFFFF] bg-clip-text"
+              class="font-extrabold text-transparent text-[75px] bg-gradient-to-t from-[#6753AF] from-5% to-95% to-[#FFFFFF] bg-clip-text w-full"
             ></h3>
             <!-- feels like -->
-            <h6 id="feelsLike" class="font-normal text-[#FFFFFF]"></h6>
+            <h6 id="feelsLike" class="font-normal text-[#FFFFFF] w-full"></h6>
+            <!-- date current -->
             <h5
               id="currentDateWrapper"
-              class="font-semibold text-[#FFFFFF]"
+              class="font-semibold text-[#FFFFFF] w-full"
             ></h5>
+            <span
+              id="tempMaxMin"
+              class="font-semibold text-[#FFFFFF] w-full"
+            ></span>
           </div>
         </div>
       </div>

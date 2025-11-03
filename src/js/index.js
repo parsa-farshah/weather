@@ -137,6 +137,12 @@ function weatherApi() {
     $country.innerText = `${result.city.country}`;
     $country.classList.add("text-lg", "mt-1.5", "font-black");
     $cityName.appendChild($country);
+
+    // wheater main
+    let $weatherMain = document.querySelector("#weatherMain");
+    let weatherMain = result.list[0].weather[0].description;
+
+    $weatherMain.innerText = weatherMain;
   });
 }
 weatherApi();

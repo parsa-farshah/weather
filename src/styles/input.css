@@ -1,2 +1,11 @@
 @import "tailwindcss";
 /* npx @tailwindcss/cli -i ./src/styles/input.css -o ./src/styles/output.css --watch */
+
+@layer base {
+  .inter {
+    font-family: "Inter", sans-serif;
+  }
+  body {
+    font-family: Inter;
+  }
+}

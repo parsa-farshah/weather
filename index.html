@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather</title>
+    <title>Weather PWA</title>
     <link rel="stylesheet" href="src/styles/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="w-full h-full">
     <!---------------------------------- loading --------------------->
@@ -107,7 +111,11 @@
           </div>
           <!-- menu -->
           <div class="w-1/3 flex justify-end items-center">
-            <div class="rotate-90">|||</div>
+            <img
+              class="w-[50px] h-[50px] md:w-[80px] md:h-[80px]"
+              src="src/images/logo.png"
+              alt=""
+            />
           </div>
         </div>
         <!---------------------------------------- updating --------------->
@@ -136,6 +144,23 @@
               search
             </button>
           </div>
+        </div>
+        <!-- current weather -->
+        <div
+          class="w-[90%] h-[186px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-6 px-[5%]"
+        >
+          <!-- left side -->
+          <div>
+            <img src="" alt="" />
+            <h5 id="weatherMain" class="inter font-extrabold text-3xl text-[#FFFFFF]  mt-12 h-full flex w-full"
+              ></h5
+            >
+            <h6 class="text-[20px] font-semibold text-[#FFFFFF]">
+              Current Weather
+            </h6>
+          </div>
+          <!-- right side -->
+          <div></div>
         </div>
       </div>
     </main>

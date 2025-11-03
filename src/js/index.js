@@ -172,13 +172,13 @@ function weatherApi() {
       $iconCurrent.setAttribute("src", src);
     }
 
-    let $src = "src/icons/200.png";
+    let $src = "";
 
     switch ($weatherIcon) {
       case "01d":
         $src = "src/icons/800.png";
         break;
-      case "01d":
+      case "01n":
         $src = "src/icons/01n.png";
         break;
 

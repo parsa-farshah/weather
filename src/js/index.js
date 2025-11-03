@@ -233,9 +233,9 @@ function weatherApi() {
       default:
         break;
     }
-    console.log($src);
-
     changeIcon($src);
+
+    // 
   });
 }
 weatherApi();

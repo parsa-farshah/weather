@@ -8,6 +8,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-amber-500: oklch(76.9% 0.188 70.08);
     --color-black: #000;
     --color-white: #fff;
@@ -268,6 +269,9 @@
   .h-\[23px\] {
     height: 23px;
   }
+  .h-\[50\] {
+    height: 50;
+  }
   .h-\[50px\] {
     height: 50px;
   }
@@ -288,6 +292,9 @@
   }
   .h-\[200px\] {
     height: 200px;
+  }
+  .h-\[400px\] {
+    height: 400px;
   }
   .h-full {
     height: 100%;
@@ -327,6 +334,12 @@
   }
   .w-\[90\%\] {
     width: 90%;
+  }
+  .w-\[95\%\] {
+    width: 95%;
+  }
+  .w-\[95\] {
+    width: 95;
   }
   .w-\[180px\] {
     width: 180px;
@@ -437,11 +450,23 @@
   .border-\[\#b6b6b6ce\] {
     border-color: #b6b6b6ce;
   }
+  .bg-\[\#\#FFFFFF\] {
+    background-color: ##FFFFFF;
+  }
   .bg-\[\#222222f6\] {
     background-color: #222222f6;
   }
+  .bg-\[\#FFFEFE\] {
+    background-color: #FFFEFE;
+  }
+  .bg-\[\#FFFFFF\] {
+    background-color: #FFFFFF;
+  }
   .bg-\[\#ececec\] {
     background-color: #ececec;
+  }
+  .bg-amber-300 {
+    background-color: var(--color-amber-300);
   }
   .bg-amber-500 {
     background-color: var(--color-amber-500);
@@ -649,9 +674,28 @@
   .underline {
     text-decoration-line: underline;
   }
+  .opacity-5 {
+    opacity: 5%;
+  }
+  .opacity-40 {
+    opacity: 40%;
+  }
+  .opacity-60 {
+    opacity: 60%;
+  }
+  .shadow-2xl {
+    --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
   .shadow-2xs {
     --tw-shadow: 0 1px var(--tw-shadow-color, rgb(0 0 0 / 0.05));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-black {
+    --tw-shadow-color: #000;
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-black) var(--tw-shadow-alpha), transparent);
+    }
   }
   .outline {
     outline-style: var(--tw-outline-style);

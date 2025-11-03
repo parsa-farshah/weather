@@ -37,13 +37,31 @@ $btnDarkLight.addEventListener("click", () => {
   $shadowWhite.classList.toggle("flex");
 });
 
-async function getData(url) {
-  let data = await fetch(url);
-  let items = await data.json();
-  return items;
+async function asynAwait(url) {
+  let res = await fetch(url);
+  let data = await res.json();
+  return data;
 }
 
+let $cityName = document.querySelector("#cityName");
+
+
 function weatherApi() {
-    getData("").then(res => {
-    })
+  asynAwait(
+    "https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran"
+  ).then((result) => {
+    let $city = document.createElement("h3");
+    let $country = document.createElement("h3");
+
+    // city add in document
+    $city.innerText = `${result.location.name}`;
+    $city.classList.add("text-3xl", "font-black");
+    $cityName.appendChild($city);
+
+    // country add in document
+    $country.innerText = `${result.location.country}`;
+    $country.classList.add("text-lg", "mt-1.5", "font-black");
+    $cityName.appendChild($country);
+  });
 }
+weatherApi();

@@ -4,6 +4,12 @@ let $btnDarkLight = document.getElementById("btnDarkLight");
 let $btnDarkLightWrapper = document.getElementById("btnDarkLightWrapper");
 let $body = document.querySelector("body");
 
+// loading
+let $loading = document.querySelector("#loading");
+
+// error search
+let $errorSearch = document.querySelector("#errorSearch");
+
 // location logo select
 let $shadowBlack = document.querySelector("#shadowBlack");
 let $locationBlack = document.querySelector("#locationBlack");
@@ -38,30 +44,69 @@ $btnDarkLight.addEventListener("click", () => {
 });
 
 async function asynAwait(url) {
+  $loading.classList.remove("hidden");
+  $loading.classList.add("flex");
   let res = await fetch(url);
-  let data = await res.json();
-  return data;
+  if (res.ok) {
+    $loading.classList.remove("flex");
+    $loading.classList.add("hidden");
+    let data = await res.json();
+    return data;
+  }
 }
 
+// select go to h3
 let $cityName = document.querySelector("#cityName");
+let $city = document.createElement("h3");
+let $country = document.createElement("h3");
 
+// search add to url word
+let $search = document.querySelector("#search");
+let $searchBtn = document.querySelector("#searchBtn");
+
+let nameCitySearch = "tehran";
+
+///////////////////////////////////////////////////// search button click
+$searchBtn.addEventListener("click", () => {
+  // reset when add new city
+  $city.innerText = "";
+  $country.innerText = "";
+  // input value enter to api url
+
+  // cant enter the number or script
+  if ($search.value == "" || $search.value.search(/0-9/)) {
+    $errorSearch.classList.remove("hidden");
+    $errorSearch.classList.add("flex");
+    setTimeout(() => {
+      $errorSearch.classList.remove("flex");
+      $errorSearch.classList.add("hidden");
+    }, 3000);
+  } else {
+    nameCitySearch = $search.value;
+    weatherApi();
+    $search.value = "";
+    $search.focus();
+  }
+});
 
 function weatherApi() {
   asynAwait(
-    "https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran"
+    `https://api.openweathermap.org/data/2.5/forecast?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
   ).then((result) => {
-    let $city = document.createElement("h3");
-    let $country = document.createElement("h3");
-
     // city add in document
-    $city.innerText = `${result.location.name}`;
+    $city.innerText = "";
+    $city.innerText = `${result.city.name}`;
     $city.classList.add("text-3xl", "font-black");
     $cityName.appendChild($city);
 
     // country add in document
-    $country.innerText = `${result.location.country}`;
+    $country.innerText = `${result.city.country}`;
     $country.classList.add("text-lg", "mt-1.5", "font-black");
     $cityName.appendChild($country);
   });
 }
 weatherApi();
+
+// https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
+
+// https://api.openweathermap.org/data/2.5/forecast?q=tehran&units=metric&appid=14da3e989046810485f4fe023957b34b

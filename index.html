@@ -7,10 +7,33 @@
     <link rel="stylesheet" href="src/styles/output.css" />
   </head>
   <body class="w-full h-full">
+    <!---------------------------------- loading --------------------->
+    <div
+      id="loading"
+      class="w-full h-[100vh] fixed bg-white z-50 justify-center items-center hidden"
+    >
+      <img src="src/images/clouds-raining.gif" alt="" />
+    </div>
+    <!---------------------------------- search error ---------------------->
+    <div
+      id="errorSearch"
+      class="w-full h-[100vh] fixed bg-white z-50 justify-center items-center hidden flex-col"
+    >
+      <img
+        class="w-[200px] h-[200px]"
+        src="src/images/hello-cloud.gif"
+        alt=""
+      />
+      <h2
+        class="w-[20%] border text-center py-3 px-5 bg-red-500 rounded-4xl text-white"
+      >
+        please search correct city and dont empty search or number
+      </h2>
+    </div>
     <main>
-      <!-- home -->
+      <!------------------------------------ home ----------------------------->
       <div class="w-full h-full pt-3 px-6">
-        <!-- city and menu -->
+        <!-------------------------------------- city and menu -------------->
         <div class="w-full flex items-center">
           <!-- dark light -->
           <div class="w-1/3">
@@ -73,6 +96,29 @@
           <!-- menu -->
           <div class="w-1/3 flex justify-end items-center">
             <div class="rotate-90">|||</div>
+          </div>
+        </div>
+        <!---------------------------------------- updating --------------->
+        <div class="w-full flex justify-center items-center mt-4 gap-7">
+          <!-- updating -->
+          <div class="border px-5 py-0.5 rounded-4xl flex items-center gap-3">
+            <div class="animate-ping w-1 h-1 bg-black rounded-full"></div>
+            <span class="text-lg font-semibold text-[12px]">Updating</span>
+          </div>
+          <!-- search -->
+          <div class="w-[180px] relative">
+            <input
+              id="search"
+              class="w-full border rounded-3xl px-3 py-1"
+              placeholder="Search"
+              type="text"
+            />
+            <button
+              id="searchBtn"
+              class="w-[60px] h-[70%] rounded-4xl font-semibold cursor-pointer bg-[#ececec] absolute top-1/2 -translate-y-1/2 right-2 text-sm"
+            >
+              search
+            </button>
           </div>
         </div>
       </div>

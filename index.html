@@ -147,20 +147,33 @@
         </div>
         <!-- current weather -->
         <div
-          class="w-[90%] h-[186px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-6 px-[5%]"
+          class="w-[90%] relative h-[186px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-6 px-[5%] flex"
         >
           <!-- left side -->
-          <div>
-            <img src="" alt="" />
-            <h5 id="weatherMain" class="inter font-extrabold text-3xl text-[#FFFFFF]  mt-12 h-full flex w-full"
-              ></h5
-            >
-            <h6 class="text-[20px] font-semibold text-[#FFFFFF]">
+          <div class="border w-1/2 h-full pt-20">
+            <img
+              class="w-[187px] h-[197px] absolute -top-24"
+              src="src/icons/200.png"
+              alt=""
+            />
+            <h5
+              id="weatherMain"
+              class="inter font-extrabold text-3xl text-[#FFFFFF] flex w-full"
+            ></h5>
+            <h6 class="text-[20px] font-semibold text-[#FFFFFF] mt-1.5">
               Current Weather
             </h6>
           </div>
           <!-- right side -->
-          <div></div>
+          <div>
+            <!-- temp -->
+            <h3 id="mainTemp"
+              class="font-extrabold text-transparent text-[75px] bg-gradient-to-t from-[#6753AF] from-5% to-95% to-[#FFFFFF] bg-clip-text"
+            >
+            </h3>
+            <!-- feels like -->
+             <div id="feelsLike"></div>
+          </div>
         </div>
       </div>
     </main>

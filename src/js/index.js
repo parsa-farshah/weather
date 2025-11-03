@@ -110,7 +110,7 @@ $searchBtn.addEventListener("click", () => {
 
 function weatherApi() {
   asynAwait(
-    `https://api.openweathermap.org/data/2.5/forecast?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
+    `https://api.openweathermap.org/data/2.5/forecast?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}&units=metric`
   ).then((result) => {
     // error city is not found
     if (result == undefined) {
@@ -140,9 +140,18 @@ function weatherApi() {
 
     // wheater main
     let $weatherMain = document.querySelector("#weatherMain");
-    let weatherMain = result.list[0].weather[0].description;
+    let $weatherMainval = result.list[0].weather[0].description;
 
-    $weatherMain.innerText = weatherMain;
+    $weatherMain.innerText = $weatherMainval;
+    console.log(result);
+
+    // main temp
+    let $mainTempHtml = document.querySelector("#mainTemp");
+    let $mainTemp = Math.round(result.list[0].main.temp) + "°";
+    $mainTempHtml.innerText = $mainTemp;
+
+    // feels Like
+    let $feelsLike = document.querySelector("#feelsLike");
   });
 }
 weatherApi();

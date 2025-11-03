@@ -195,10 +195,40 @@ function weatherApi() {
         $src = "src/icons/801.png";
         break;
       case "04d":
-        $src = "src/icons/801.png";
+        $src = "src/icons/04.png";
         break;
       case "04n":
-        $src = "src/icons/801.png";
+        $src = "src/icons/04.png";
+        break;
+      case "09d":
+        $src = "src/icons/301.png";
+        break;
+      case "09n":
+        $src = "src/icons/301.png";
+        break;
+      case "10d":
+        $src = "src/icons/10d.png";
+        break;
+      case "10n":
+        $src = "src/icons/10n.png";
+        break;
+      case "11d":
+        $src = "src/icons/202.png";
+        break;
+      case "11n":
+        $src = "src/icons/202.png";
+        break;
+      case "13d":
+        $src = "src/icons/600.png";
+        break;
+      case "13n":
+        $src = "src/icons/600.png";
+        break;
+      case "50d":
+        $src = "src/icons/65.png";
+        break;
+      case "50n":
+        $src = "src/icons/65.png";
         break;
       default:
         break;

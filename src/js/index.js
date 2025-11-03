@@ -152,9 +152,22 @@ function weatherApi() {
 
     // feels Like
     let $feelsLike = document.querySelector("#feelsLike");
+    let $feelsLikeVal =
+      "Feels Like " + Math.round(result.list[0].main.feels_like) + "°";
+    $feelsLike.innerText = $feelsLikeVal;
+    console.log($feelsLikeVal);
+
+    console.log(result);
   });
 }
 weatherApi();
+let $currentDateWrapper = document.querySelector("#currentDateWrapper");
+let $date = new Date();
+let $currentDate = `${
+  $date.getMonth() + 1
+}/${$date.getDate()}/${$date.getFullYear()}`;
+
+$currentDateWrapper.innerText = $currentDate;
 
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 

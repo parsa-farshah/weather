@@ -307,7 +307,7 @@ function weatherApi() {
 
     $currentDateWrapper.innerText = $currentDate;
 
-    // data for today other hour weather
+    //////////////////////////////////// data for today other hour weather
     let todayHour = $date.getHours();
     let day = 0;
     if ($date.getDate() < 10) {
@@ -425,6 +425,8 @@ function weatherApi() {
 </div>`;
       }
     });
+
+    // btn 5day forecast
   });
 }
 weatherApi();

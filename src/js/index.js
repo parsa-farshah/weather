@@ -850,6 +850,150 @@ function weatherApi() {
         </div>`;
 
     // end in 3 days
+
+
+
+      //////////////////////////////////// in 4 days
+
+    let tempMaxTommorowIn4 = 0;
+    let tempminTommorowIn4 = 0;
+    let getFullDateTommorowIn4 = "";
+    let tommorowTxtIn4 = "";
+    let tommorowCurrentIn4 = "";
+    let tommorowIconIn4 = "";
+    let $srcTomorrowIn4 = "";
+
+    let tempMaxArrIn4 = [];
+    let tempMinArrIn4 = [];
+
+    $lists.map((item) => {
+      // tommorow
+      let $dayTommorowIn4 = 0;
+      $dayTommorowIn4 = $date.getDate();
+      $dayTommorowIn4 = parseInt($dayTommorowIn4);
+      $dayTommorowIn4 = $dayTommorowIn4 + 4;
+      $dayTommorowIn4.toString();
+
+      if ($date.getDate() < 10) {
+        $dayTommorowIn4 = "0" + $dayTommorowIn4;
+      } else {
+        $dayTommorowIn4 = $dayTommorowIn4;
+      }
+
+      let getFullDateIn4 = item.dt_txt.slice(0, 10);
+
+      let $tommorowDateIn4 = `${$date.getFullYear()}-${
+        $date.getMonth() + 1
+      }-${$dayTommorowIn4}`;
+
+      let $tommorowDateTxtIn4 = `${$date.getFullYear()}/${
+        $date.getMonth() + 1
+      }/${$dayTommorowIn4}`;
+
+      if (getFullDateIn4 == $tommorowDateIn4) {
+        tempMaxArrIn4.push(item.main.temp_max);
+        tempMinArrIn4.push(item.main.temp_min);
+
+        // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
+        // tempminTommorow = Math.round(item.main.temp_min) + "°";
+        getFullDateTommorowIn4 = $tommorowDateTxtIn4;
+        tommorowTxtIn4 = "In Four Days";
+        tommorowCurrentIn4 = item.weather[0].description;
+        tommorowIconIn4 = item.weather[0].icon;
+
+        // icon
+        let $weatherIconTomorrowIn4 = item.weather[0].icon;
+
+        switch ($weatherIconTomorrowIn4) {
+          case "01d":
+            $srcTomorrowIn4 = "src/icons/800.png";
+            break;
+          case "01n":
+            $srcTomorrowIn4 = "src/icons/01n.png";
+            break;
+
+          case "02d":
+            $srcTomorrowIn4 = "src/icons/02d.png";
+            break;
+          case "02n":
+            $srcTomorrowIn4 = "src/icons/02n.png";
+            break;
+          case "03d":
+            $srcTomorrowIn4 = "src/icons/801.png";
+            break;
+          case "03n":
+            $srcTomorrowIn4 = "src/icons/801.png";
+            break;
+          case "04d":
+            $srcTomorrowIn4 = "src/icons/04.png";
+            break;
+          case "04n":
+            $srcTomorrowIn4 = "src/icons/04.png";
+            break;
+          case "09d":
+            $srcTomorrowIn4 = "src/icons/301.png";
+            break;
+          case "09n":
+            $srcTomorrowIn4 = "src/icons/301.png";
+            break;
+          case "10d":
+            $srcTomorrowIn4 = "src/icons/10d.png";
+            break;
+          case "10n":
+            $srcTomorrowIn4 = "src/icons/10n.png";
+            break;
+          case "11d":
+            $srcTomorrowIn4 = "src/icons/202.png";
+            break;
+          case "11n":
+            $srcTomorrowIn4 = "src/icons/202.png";
+            break;
+          case "13d":
+            $srcTomorrowIn4 = "src/icons/600.png";
+            break;
+          case "13n":
+            $srcTomorrowIn4 = "src/icons/600.png";
+            break;
+          case "50d":
+            $srcTomorrowIn4 = "src/icons/65.png";
+            break;
+          case "50n":
+            $srcTomorrowIn4 = "src/icons/65.png";
+            break;
+          default:
+            console.log("error");
+
+            break;
+        }
+      }
+
+      if (tempMaxArrIn4.length > 0 && tempMinArrIn4.length > 0) {
+        tempMaxTommorowIn4 = Math.round(Math.max(...tempMaxArrIn4)) + "°";
+        tempminTommorowIn4 = Math.round(Math.min(...tempMinArrIn4)) + "°";
+      }
+    });
+
+    $forecat5day.innerHTML += `
+        <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="flex gap-3">
+          <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn4}"/>
+          <div class="pt-3 md:pt-11">
+            <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtIn4}</h2>
+            <h3 class="font-semibold text-sm md:text-[16px] text-white">${getFullDateTommorowIn4}</h3>
+            <h3 class="font-semibold text-sm md:text-[16px] text-white">${tempMaxTommorowIn4}/${tempminTommorowIn4}</h3>
+          </div>
+        </div>
+        <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentIn4}</h5>
+        </div>`;
+
+    // end in 4 days
+
+
+
+
+
+
+    
   });
 }
 weatherApi();

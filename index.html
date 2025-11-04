@@ -184,11 +184,32 @@
         </div>
         <!-- current weather visibility -->
         <div
-          class="w-[90%] h-[147px] opacity-40 overflow-hidden bg-[#FFFFFF] shadow-black shadow-2xl mx-auto mt-6 rounded-[20px] flex justify-around items-center"
+          class="w-[90%] h-[147px] overflow-hidden bg-[#FFFFFF] shadow-black shadow-2xl mx-auto mt-6 rounded-[20px] flex justify-around items-center"
         >
-          <div class="w-[30%] h-[80%] bg-black opacity-10 rounded-[15px]"></div>
-          <div class="w-[30%] h-[80%] bg-black opacity-10 rounded-[15px]"></div>
-          <div class="w-[30%] h-[80%] bg-black opacity-10 rounded-[15px]"></div>
+          <!-- visibility -->
+          <div
+            class="w-[30%] h-[80%] bg-[#0000003d] rounded-[15px] capitalize flex flex-col justify-center items-center"
+          >
+            <img
+              class="w-[59px] h-[59px]"
+              src="src/icons/visibility.png"
+              alt=""
+            />
+            <span class="text-[15px] font-semibold">visibility</span>
+            <h5 id="visibility" class="text-[12px] font-semibold"></h5>
+          </div>
+          <!-- Humidity -->
+          <div
+            class="w-[30%] h-[80%] bg-[#0000003d] rounded-[15px] capitalize flex flex-col justify-center items-center"
+          >
+            <img
+              class="w-[59px] h-[59px]"
+              src="src/icons/Humidity.svg"
+              alt=""
+            />
+            <span class="text-[15px] font-semibold">Humidity</span>
+            <h5 id="humidity" class="text-[12px] font-semibold"></h5>
+          </div>
         </div>
       </div>
     </main>

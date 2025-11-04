@@ -235,7 +235,20 @@ function weatherApi() {
     }
     changeIcon($src);
 
-    // 
+    // visibility
+    let $visibility = document.querySelector("#visibility");
+    let $visibilityVal = result.list[0].visibility / 1000 + "km";
+    $visibility.innerText = $visibilityVal;
+
+    // humidity
+    let $humidity = document.querySelector("#humidity");
+    let $humidityVal = result.list[0].main.humidity + "%";
+    $humidity.innerText = $humidityVal;
+
+    // humidity
+    // let $humidity = document.querySelector("#humidity");
+    // let $humidityVal = result.list[0].main.humidity + "%";
+    // $humidity.innerText = $humidityVal;
   });
 }
 weatherApi();

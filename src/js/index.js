@@ -237,7 +237,7 @@ function weatherApi() {
 
     // visibility
     let $visibility = document.querySelector("#visibility");
-    let $visibilityVal = result.list[0].visibility / 1000 + "km";
+    let $visibilityVal = result.list[0].visibility / 1000 + " km";
     $visibility.innerText = $visibilityVal;
 
     // humidity
@@ -245,10 +245,10 @@ function weatherApi() {
     let $humidityVal = result.list[0].main.humidity + "%";
     $humidity.innerText = $humidityVal;
 
-    // humidity
-    // let $humidity = document.querySelector("#humidity");
-    // let $humidityVal = result.list[0].main.humidity + "%";
-    // $humidity.innerText = $humidityVal;
+    // wind Speed
+    let $windSpeed = document.querySelector("#windSpeed");
+    let $windSpeedVal = result.list[0].wind.speed * 3.6;
+    $windSpeed.innerText = Math.round($windSpeedVal) + " km/h";
   });
 }
 weatherApi();

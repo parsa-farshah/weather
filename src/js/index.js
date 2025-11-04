@@ -437,6 +437,7 @@ function weatherApi() {
       // add section
       $forecat5day.classList.remove("hidden");
       $forecat5day.classList.add("flex");
+
       // tommorow
       let tempMaxTommorow = 0;
       let tempminTommorow = 0;
@@ -445,6 +446,9 @@ function weatherApi() {
       let tommorowCurrent = "";
       let tommorowIcon = "";
       let $srcTomorrow = "";
+
+      let tempMaxArr = [];
+      let tempMinArr = [];
 
       $lists.map((item) => {
         // tommorow
@@ -472,8 +476,11 @@ function weatherApi() {
         }/${$dayTommorow}`;
 
         if (getFullDate == $tommorowDate) {
-          tempMaxTommorow = Math.round(item.main.temp_max) + "°";
-          tempminTommorow = Math.round(item.main.temp_min) + "°";
+          tempMaxArr.push(item.main.temp_max);
+          tempMinArr.push(item.main.temp_min);
+
+          // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
+          // tempminTommorow = Math.round(item.main.temp_min) + "°";
           getFullDateTommorow = $tommorowDateTxt;
           tommorowTxt = "Tomorrow";
           tommorowCurrent = item.weather[0].description;
@@ -545,19 +552,22 @@ function weatherApi() {
           }
         }
 
-        console.log($srcTomorrow);
+        if (tempMaxArr.length > 0 && tempMinArr.length > 0) {
+          tempMaxTommorow = Math.round(Math.max(...tempMaxArr)) + "°";
+          tempminTommorow = Math.round(Math.min(...tempMinArr)) + "°";
+        }
 
         $forecat5day.innerHTML = `
-        <div class="w-[100%] border border-[#3d3d3d] relative h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-24 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-3">
-          <img class="w-[200px] h-[180px]" src="${$srcTomorrow}"/>
-          <div class="pt-11">
-            <h2 class="font-semibold text-2xl text-white">${tommorowTxt}</h2>
-            <h3 class="font-semibold text-white">${getFullDateTommorow}</h3>
-            <h3 class="font-semibold text-white">${tempMaxTommorow}/${tempminTommorow}</h3>
+          <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrow}"/>
+          <div class="pt-3 md:pt-11">
+            <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxt}</h2>
+            <h3 class="font-semibold text-sm md:text-[16px] text-white">${getFullDateTommorow}</h3>
+            <h3 class="font-semibold text-sm md:text-[16px] text-white">${tempMaxTommorow}/${tempminTommorow}</h3>
           </div>
         </div>
-        <h5  class="font-extrabold text-[20px] text-white">${tommorowCurrent}</h5>
+        <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrent}</h5>
         </div>`;
       });
     });

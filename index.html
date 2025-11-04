@@ -144,7 +144,10 @@
           </div>
         </div>
         <!-- current weather , visbility , day difrrent weather diffrent time -->
-        <div class="w-full flex flex-wrap justify-between">
+        <div
+          id="sectionWeatherCurrent"
+          class="w-full flex flex-wrap justify-between"
+        >
           <!------------------ current weather --------------------->
           <div
             class="w-[90%] md:w-[50%] relative h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto md:mx-0 mt-24 md:mt-6 px-[5%] flex justify-between duration-700"
@@ -232,7 +235,10 @@
             </div>
           </div>
           <!-- today other hour weather -->
-          <div class="w-[90%] md:w-fit mt-5 mx-auto md:mx-0">
+          <div
+            class="w-[90%] md:w-[40%] border border-[#b8b8b8b2] px-3 py-3 rounded-3xl mt-5 mx-auto md:mx-0"
+          >
+            <h3 class="font-extrabold text-[20px] text-white"></h3>
             <!-- title -->
             <div class="flex justify-between">
               <span class="font-semibold text-[20px]">Today</span>
@@ -249,10 +255,15 @@
             <!-- hours weather -->
             <div
               id="daysWrapper"
-              class="daysWrapper w-full flex flex-wrap justify-start gap-5 mt-4"
+              class="daysWrapper w-full flex flex-wrap justify-start gap-[6%] md:fap-[3%] mt-4"
             ></div>
           </div>
         </div>
+        <!-- 5day forecast -->
+        <div
+          id="forecat5day"
+          class="w-[90%] relative mx-auto mt-24 md:mt-6 justify-between duration-700 hidden"
+        ></div>
         <!-------------------------------------- navbar ------------------->
         <div
           id="nav"
@@ -264,14 +275,16 @@
           >
             <!-- home -->
             <li>
-              <a href="" class="w-full h-full flex justify-center items-center"
+              <a
+                href="#"
+                class="w-full h-full flex justify-center items-center cursor-pointer group"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px]"
+                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
                 >
                   <path
                     strokeLinecap="round"
@@ -283,14 +296,17 @@
             </li>
             <!-- location -->
             <li>
-              <a href="" class="w-full h-full flex justify-center items-center">
+              <a
+                href=""
+                class="w-full h-full flex justify-center items-center group"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px]"
+                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
                 >
                   <path
                     stroke-linecap="round"
@@ -307,14 +323,17 @@
             </li>
             <!-- chart -->
             <li>
-              <a href="" class="w-full h-full flex justify-center items-center">
+              <a
+                href=""
+                class="w-full h-full flex justify-center items-center group"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px]"
+                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
                 >
                   <path
                     stroke-linecap="round"
@@ -326,14 +345,17 @@
             </li>
             <!-- nottif -->
             <li>
-              <a href="" class="w-full h-full flex justify-center items-center">
+              <a
+                href=""
+                class="w-full h-full flex justify-center items-center group"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px]"
+                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
                 >
                   <path
                     stroke-linecap="round"

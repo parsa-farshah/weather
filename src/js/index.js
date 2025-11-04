@@ -404,7 +404,6 @@ function weatherApi() {
         $temp12Pm = Math.round(item.main.temp) + "°";
 
         let $daysWrapper = document.querySelector("#daysWrapper");
-        console.log($daysWrapper);
 
         if (getTimesDtText > 12) {
           getTimesDtText = getTimesDtText + " PM";
@@ -413,7 +412,7 @@ function weatherApi() {
         }
 
         $daysWrapper.innerHTML += `<div 
-  class="WeatherNow w-[60px] h-[146px] bg-[#00000066]/80 border border-[#00000066]/40 shadow-[#FFFFFF40]/25 shadow-2xl rounded-[30px] flex flex-col py-4"
+  class="WeatherNow w-[20%] md:w-[70px] h-[146px] bg-[#00000066]/80 border border-[#00000066]/40 shadow-[#FFFFFF40]/25 shadow-2xl rounded-[30px] flex flex-col py-4"
 >
   <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">${getTimesDtText}</h3>
   <img  class="w-[80%] h-[50px] mx-auto mt-3" src="${$src12}" alt="" />
@@ -427,6 +426,141 @@ function weatherApi() {
     });
 
     // btn 5day forecast
+    // hidden others
+    let $fiveDayBtn = document.querySelector("#fiveDayBtn");
+    let $sectionWeatherCurrent = document.querySelector(
+      "#sectionWeatherCurrent"
+    );
+    let $forecat5day = document.querySelector("#forecat5day");
+    $fiveDayBtn.addEventListener("click", () => {
+      $sectionWeatherCurrent.classList.add("hidden");
+      // add section
+      $forecat5day.classList.remove("hidden");
+      $forecat5day.classList.add("flex");
+      // tommorow
+      let tempMaxTommorow = 0;
+      let tempminTommorow = 0;
+      let getFullDateTommorow = "";
+      let tommorowTxt = "";
+      let tommorowCurrent = "";
+      let tommorowIcon = "";
+      let $srcTomorrow = "";
+
+      $lists.map((item) => {
+        // tommorow
+        let $dayTommorow = 0;
+        $dayTommorow = $date.getDate();
+        $dayTommorow = parseInt($dayTommorow);
+        $dayTommorow = $dayTommorow + 1;
+        $dayTommorow.toString();
+
+        if ($date.getDate() < 10) {
+          $dayTommorow = "0" + $dayTommorow;
+        } else {
+          $dayTommorow = $dayTommorow;
+        }
+
+        let getTimesDtText = item.dt_txt.slice(11, 13);
+        let getFullDate = item.dt_txt.slice(0, 10);
+
+        let $tommorowDate = `${$date.getFullYear()}-${
+          $date.getMonth() + 1
+        }-${$dayTommorow}`;
+
+        let $tommorowDateTxt = `${$date.getFullYear()}/${
+          $date.getMonth() + 1
+        }/${$dayTommorow}`;
+
+        if (getFullDate == $tommorowDate) {
+          tempMaxTommorow = Math.round(item.main.temp_max) + "°";
+          tempminTommorow = Math.round(item.main.temp_min) + "°";
+          getFullDateTommorow = $tommorowDateTxt;
+          tommorowTxt = "Tomorrow";
+          tommorowCurrent = item.weather[0].description;
+          tommorowIcon = item.weather[0].icon;
+
+          // icon
+          let $weatherIconTomorrow = item.weather[0].icon;
+
+          switch ($weatherIconTomorrow) {
+            case "01d":
+              $srcTomorrow = "src/icons/800.png";
+              break;
+            case "01n":
+              $srcTomorrow = "src/icons/01n.png";
+              break;
+
+            case "02d":
+              $srcTomorrow = "src/icons/02d.png";
+              break;
+            case "02n":
+              $srcTomorrow = "src/icons/02n.png";
+              break;
+            case "03d":
+              $srcTomorrow = "src/icons/801.png";
+              break;
+            case "03n":
+              $srcTomorrow = "src/icons/801.png";
+              break;
+            case "04d":
+              $srcTomorrow = "src/icons/04.png";
+              break;
+            case "04n":
+              $srcTomorrow = "src/icons/04.png";
+              break;
+            case "09d":
+              $srcTomorrow = "src/icons/301.png";
+              break;
+            case "09n":
+              $srcTomorrow = "src/icons/301.png";
+              break;
+            case "10d":
+              $srcTomorrow = "src/icons/10d.png";
+              break;
+            case "10n":
+              $srcTomorrow = "src/icons/10n.png";
+              break;
+            case "11d":
+              $srcTomorrow = "src/icons/202.png";
+              break;
+            case "11n":
+              $srcTomorrow = "src/icons/202.png";
+              break;
+            case "13d":
+              $srcTomorrow = "src/icons/600.png";
+              break;
+            case "13n":
+              $srcTomorrow = "src/icons/600.png";
+              break;
+            case "50d":
+              $srcTomorrow = "src/icons/65.png";
+              break;
+            case "50n":
+              $srcTomorrow = "src/icons/65.png";
+              break;
+            default:
+              console.log("error");
+
+              break;
+          }
+        }
+
+        console.log($srcTomorrow);
+
+        $forecat5day.innerHTML = `
+        <div class="w-[100%] border border-[#3d3d3d] relative h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-24 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="flex gap-3">
+          <img class="w-[200px] h-[180px]" src="${$srcTomorrow}"/>
+          <div class="pt-11">
+            <h2 class="font-semibold text-2xl text-white">${tommorowTxt}</h2>
+            <h3 class="font-semibold text-white">${getFullDateTommorow}</h3>
+            <h3 class="font-semibold text-white">${tempMaxTommorow}/${tempminTommorow}</h3>
+          </div>
+        </div>
+        <h5  class="font-extrabold text-[20px] text-white">${tommorowCurrent}</h5>
+        </div>`;
+      });
+    });
   });
 }
 weatherApi();

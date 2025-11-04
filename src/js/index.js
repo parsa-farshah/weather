@@ -76,6 +76,35 @@ $btnDarkLight.addEventListener("click", () => {
     item.classList.toggle("shadow-[#FFFFFF40]/25");
     item.classList.toggle("bg-[#FFFFFF33]/80");
   });
+
+  // navbar
+  let $nav = document.querySelector("#nav");
+
+  let $navUl = document.querySelector("#navUl");
+  let $navLi = document.querySelectorAll("#navUl>li>a>svg");
+
+  $nav.classList.toggle("bg-[#FFFFFF]");
+  $nav.classList.toggle("shadow-black");
+  $nav.classList.toggle("md:shadow-black/40");
+  $nav.classList.toggle("bg-[#FFFEFE]/6");
+  $nav.classList.toggle("shadow-white/20");
+  $nav.classList.toggle("md:shadow-white/15");
+
+  $navUl.classList.toggle("*:bg-[#000000]/20");
+  $navUl.classList.toggle("*:bg-[#FFFEFE]/40");
+
+  // icons white
+  $navLi.forEach((val) => {
+    let $color = val.getAttribute("stroke", "#ffff");
+    console.log($color);
+
+    if ($color == "#000000") {
+      val.setAttribute("stroke", "#ffff");
+    }
+    if ($color == "#ffff") {
+      val.setAttribute("stroke", "#000000");
+    }
+  });
 });
 
 async function asynAwait(url) {

@@ -130,8 +130,15 @@ let $searchBtn = document.querySelector("#searchBtn");
 
 let nameCitySearch = "tehran";
 
+let $daysWrapper = document.querySelector("#daysWrapper");
+
+let $forecat5day = document.querySelector("#forecat5day");
+
 ///////////////////////////////////////////////////// search button click
 $searchBtn.addEventListener("click", () => {
+  // reseting
+  $forecat5day.innerHTML = "";
+  $daysWrapper.innerHTML = "";
   // reset when add new city
   $city.innerText = "";
   $country.innerText = "";
@@ -403,8 +410,6 @@ function weatherApi() {
         // let $temp12Pm = document.querySelector("#temp12Pm");
         $temp12Pm = Math.round(item.main.temp) + "°";
 
-        let $daysWrapper = document.querySelector("#daysWrapper");
-
         if (getTimesDtText > 12) {
           getTimesDtText = getTimesDtText + " PM";
         } else {
@@ -431,14 +436,18 @@ function weatherApi() {
     let $sectionWeatherCurrent = document.querySelector(
       "#sectionWeatherCurrent"
     );
-    let $forecat5day = document.querySelector("#forecat5day");
+
+    //////////////////////////// click on 5 days
     $fiveDayBtn.addEventListener("click", () => {
       $sectionWeatherCurrent.classList.add("hidden");
       // add section
       $forecat5day.classList.remove("hidden");
       $forecat5day.classList.add("flex");
 
-      // tommorow
+
+    });
+
+          // tommorow
       let tempMaxTommorow = 0;
       let tempminTommorow = 0;
       let getFullDateTommorow = "";
@@ -708,7 +717,6 @@ function weatherApi() {
         </div>`;
 
       // end Day after tomorrow
-    });
   });
 }
 weatherApi();

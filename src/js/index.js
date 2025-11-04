@@ -851,9 +851,7 @@ function weatherApi() {
 
     // end in 3 days
 
-
-
-      //////////////////////////////////// in 4 days
+    //////////////////////////////////// in 4 days
 
     let tempMaxTommorowIn4 = 0;
     let tempminTommorowIn4 = 0;
@@ -988,12 +986,7 @@ function weatherApi() {
 
     // end in 4 days
 
-
-
-
-
-
-    
+   
   });
 }
 weatherApi();

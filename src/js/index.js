@@ -278,8 +278,10 @@ function weatherApi() {
       // console.log(getTimesDtText);
       // console.log(getFullDate);
       // console.log($todayDate);
+      // if (getFullDate == $todayDate && getTimesDtText == "12") {
+      // }
 
-      if (getFullDate == $todayDate && getTimesDtText == "12") {
+      if (getFullDate == $todayDate) {
         // add icon for 12pm
         let $weatherIcon12 = item.weather[0].icon;
         let $src12 = "";
@@ -346,21 +348,33 @@ function weatherApi() {
             break;
         }
 
-        let $twelvePm = document.querySelector("#twelvePm");
-
-        function changeIcon(src) {
-          $twelvePm.setAttribute("src", src);
-        }
-        changeIcon($src12);
+        // let $twelvePm = document.querySelector("#twelvePm");
 
         // add temp 12 pm
-        let $temp12Pm = document.querySelector("#temp12Pm");
-        $temp12Pm.innerText = Math.round(item.main.temp) + "°";
-      }
+        // let $temp12Pm = document.querySelector("#temp12Pm");
+        $temp12Pm = Math.round(item.main.temp) + "°";
 
-      // if (getFullDate == $todayDate) {
-      //   console.log(item);
-      // }
+        let $daysWrapper = document.querySelector("#daysWrapper");
+        console.log($daysWrapper);
+
+        if (getTimesDtText > 12) {
+          getTimesDtText = getTimesDtText + " PM";
+        } else {
+          getTimesDtText = getTimesDtText + " AM";
+        }
+
+        $daysWrapper.innerHTML += `<div
+  class="w-[60px] h-[146px] bg-[#00000066] shadow-black md:shadow-black/40 shadow-2xl rounded-[30px] flex flex-col py-4"
+>
+  <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">${getTimesDtText}</h3>
+  <img  class="w-[80%] h-[50px] mx-auto mt-3" src="${$src12}" alt="" />
+  <h5
+    
+    class="font-semibold text-[15px] text-center text-[#FFFFFF] mt-3"
+  >
+  ${$temp12Pm}</h5>
+</div>`;
+      }
     });
   });
 }

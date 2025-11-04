@@ -227,7 +227,7 @@
             </div>
           </div>
           <!-- today other hour weather -->
-          <div class="w-full mt-5">
+          <div class="w-[90%] md:w-[40%] mt-5 mx-auto">
             <!-- title -->
             <div class="flex justify-between">
               <span class="font-semibold text-[20px]">Today</span>
@@ -239,18 +239,7 @@
               </div>
             </div>
             <!-- hours weather -->
-            <div
-              class="w-[60px] h-[146px] bg-[#00000066] shadow-black md:shadow-black/40 shadow-2xl rounded-[30px] flex flex-col py-4"
-            >
-              <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">12 PM</h3>
-              <img
-                id="twelvePm"
-                class="w-[80%] h-[50px] mx-auto mt-3"
-                src=""
-                alt=""
-              />
-              <h5 id="temp12Pm" class="font-semibold text-[15px] text-center text-[#FFFFFF] mt-3"></h5>
-            </div>
+            <div id="daysWrapper" class="w-full flex justify-between"></div>
           </div>
         </div>
       </div>
@@ -258,3 +247,14 @@
   </body>
   <script src="src/js/index.js"></script>
 </html>
+
+<!-- <div
+  class="w-[60px] h-[146px] bg-[#00000066] shadow-black md:shadow-black/40 shadow-2xl rounded-[30px] flex flex-col py-4"
+>
+  <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">12 PM</h3>
+  <img id="twelvePm" class="w-[80%] h-[50px] mx-auto mt-3" src="" alt="" />
+  <h5
+    id="temp12Pm"
+    class="font-semibold text-[15px] text-center text-[#FFFFFF] mt-3"
+  ></h5>
+</div> -->

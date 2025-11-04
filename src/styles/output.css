@@ -10,6 +10,7 @@
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-amber-500: oklch(76.9% 0.188 70.08);
+    --color-amber-800: oklch(47.3% 0.137 46.201);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -221,8 +222,14 @@
   .mt-1\.5 {
     margin-top: calc(var(--spacing) * 1.5);
   }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
   }
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
@@ -241,6 +248,9 @@
   }
   .h-1 {
     height: calc(var(--spacing) * 1);
+  }
+  .h-2 {
+    height: calc(var(--spacing) * 2);
   }
   .h-6 {
     height: calc(var(--spacing) * 6);
@@ -265,6 +275,9 @@
   }
   .h-\[100vh\] {
     height: 100vh;
+  }
+  .h-\[146px\] {
+    height: 146px;
   }
   .h-\[147px\] {
     height: 147px;
@@ -322,6 +335,12 @@
   }
   .w-\[70\%\] {
     width: 70%;
+  }
+  .w-\[80\%\] {
+    width: 80%;
+  }
+  .w-\[80\] {
+    width: 80;
   }
   .w-\[90\%\] {
     width: 90%;
@@ -395,6 +414,9 @@
   .justify-end {
     justify-content: flex-end;
   }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
   .gap-3 {
     gap: calc(var(--spacing) * 3);
   }
@@ -428,6 +450,9 @@
   .rounded-\[29px\] {
     border-radius: 29px;
   }
+  .rounded-\[30px\] {
+    border-radius: 30px;
+  }
   .rounded-\[150\] {
     border-radius: 150;
   }
@@ -447,14 +472,23 @@
   .bg-\[\#0000003d\] {
     background-color: #0000003d;
   }
+  .bg-\[\#00000066\] {
+    background-color: #00000066;
+  }
   .bg-\[\#222222f6\] {
     background-color: #222222f6;
+  }
+  .bg-\[\#FFFFFF40\] {
+    background-color: #FFFFFF40;
   }
   .bg-\[\#FFFFFF\] {
     background-color: #FFFFFF;
   }
   .bg-\[\#ececec\] {
     background-color: #ececec;
+  }
+  .bg-amber-800 {
+    background-color: var(--color-amber-800);
   }
   .bg-black {
     background-color: var(--color-black);
@@ -534,6 +568,9 @@
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
   }
@@ -561,6 +598,9 @@
   }
   .text-\[12px\] {
     font-size: 12px;
+  }
+  .text-\[13px\] {
+    font-size: 13px;
   }
   .text-\[15px\] {
     font-size: 15px;
@@ -590,6 +630,12 @@
   .text-\[\#FFFFFF\] {
     color: #FFFFFF;
   }
+  .text-\[20\[x\]\] {
+    color: 20[x];
+  }
+  .text-\[20\] {
+    color: 20;
+  }
   .text-transparent {
     color: transparent;
   }
@@ -615,10 +661,20 @@
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .shadow-2xs {
+    --tw-shadow: 0 1px var(--tw-shadow-color, rgb(0 0 0 / 0.05));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
   .shadow-black {
     --tw-shadow-color: #000;
     @supports (color: color-mix(in lab, red, red)) {
       --tw-shadow-color: color-mix(in oklab, var(--color-black) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-black\/40 {
+    --tw-shadow-color: color-mix(in srgb, #000 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-black) 40%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
   .outline {

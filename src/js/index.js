@@ -157,7 +157,6 @@ function weatherApi() {
 
     // temp max min
     let $tempMaxMin = document.querySelector("#tempMaxMin");
-    console.log(result);
     let $tempMin = Math.round(result.list[0].main.temp_min) + "°";
     let $tempMax = Math.round(result.list[0].main.temp_max) + "°";
 
@@ -249,18 +248,123 @@ function weatherApi() {
     let $windSpeed = document.querySelector("#windSpeed");
     let $windSpeedVal = result.list[0].wind.speed * 3.6;
     $windSpeed.innerText = Math.round($windSpeedVal) + " km/h";
+
+    // add date
+    let $currentDateWrapper = document.querySelector("#currentDateWrapper");
+    let $date = new Date();
+    let $currentDate = `${
+      $date.getMonth() + 1
+    }/${$date.getDate()}/${$date.getFullYear()}`;
+
+    $currentDateWrapper.innerText = $currentDate;
+
+    // data for today other hour weather
+    let todayHour = $date.getHours();
+    let day = 0;
+    if ($date.getDate() < 10) {
+      day = "0" + $date.getDate();
+    } else {
+      day = $date.getDate();
+    }
+
+    let $todayDate = `${$date.getFullYear()}-${$date.getMonth() + 1}-${day}`;
+
+    let $lists = result.list;
+    $lists.map((item) => {
+      // console.log(item);
+
+      let getTimesDtText = item.dt_txt.slice(11, 13);
+      let getFullDate = item.dt_txt.slice(0, 10);
+      // console.log(getTimesDtText);
+      // console.log(getFullDate);
+      // console.log($todayDate);
+
+      if (getFullDate == $todayDate && getTimesDtText == "12") {
+        // add icon for 12pm
+        let $weatherIcon12 = item.weather[0].icon;
+        let $src12 = "";
+
+        switch ($weatherIcon12) {
+          case "01d":
+            $src12 = "src/icons/800.png";
+            break;
+          case "01n":
+            $src12 = "src/icons/01n.png";
+            break;
+
+          case "02d":
+            $src12 = "src/icons/02d.png";
+            break;
+          case "02n":
+            $src12 = "src/icons/02n.png";
+            break;
+          case "03d":
+            $src12 = "src/icons/801.png";
+            break;
+          case "03n":
+            $src12 = "src/icons/801.png";
+            break;
+          case "04d":
+            $src12 = "src/icons/04.png";
+            break;
+          case "04n":
+            $src12 = "src/icons/04.png";
+            break;
+          case "09d":
+            $src12 = "src/icons/301.png";
+            break;
+          case "09n":
+            $src12 = "src/icons/301.png";
+            break;
+          case "10d":
+            $src12 = "src/icons/10d.png";
+            break;
+          case "10n":
+            $src12 = "src/icons/10n.png";
+            break;
+          case "11d":
+            $src12 = "src/icons/202.png";
+            break;
+          case "11n":
+            $src12 = "src/icons/202.png";
+            break;
+          case "13d":
+            $src12 = "src/icons/600.png";
+            break;
+          case "13n":
+            $src12 = "src/icons/600.png";
+            break;
+          case "50d":
+            $src12 = "src/icons/65.png";
+            break;
+          case "50n":
+            $src12 = "src/icons/65.png";
+            break;
+          default:
+            console.log("error");
+
+            break;
+        }
+
+        let $twelvePm = document.querySelector("#twelvePm");
+
+        function changeIcon(src) {
+          $twelvePm.setAttribute("src", src);
+        }
+        changeIcon($src12);
+
+        // add temp 12 pm
+        let $temp12Pm = document.querySelector("#temp12Pm");
+        $temp12Pm.innerText = Math.round(item.main.temp) + "°";
+      }
+
+      // if (getFullDate == $todayDate) {
+      //   console.log(item);
+      // }
+    });
   });
 }
 weatherApi();
-
-// add date
-let $currentDateWrapper = document.querySelector("#currentDateWrapper");
-let $date = new Date();
-let $currentDate = `${
-  $date.getMonth() + 1
-}/${$date.getDate()}/${$date.getFullYear()}`;
-
-$currentDateWrapper.innerText = $currentDate;
 
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 

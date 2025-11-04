@@ -443,131 +443,129 @@ function weatherApi() {
       // add section
       $forecat5day.classList.remove("hidden");
       $forecat5day.classList.add("flex");
-
-
     });
 
-          // tommorow
-      let tempMaxTommorow = 0;
-      let tempminTommorow = 0;
-      let getFullDateTommorow = "";
-      let tommorowTxt = "";
-      let tommorowCurrent = "";
-      let tommorowIcon = "";
-      let $srcTomorrow = "";
+    // tommorow
+    let tempMaxTommorow = 0;
+    let tempminTommorow = 0;
+    let getFullDateTommorow = "";
+    let tommorowTxt = "";
+    let tommorowCurrent = "";
+    let tommorowIcon = "";
+    let $srcTomorrow = "";
 
-      let tempMaxArr = [];
-      let tempMinArr = [];
+    let tempMaxArr = [];
+    let tempMinArr = [];
 
-      $lists.map((item) => {
-        // tommorow
-        let $dayTommorow = 0;
-        $dayTommorow = $date.getDate();
-        $dayTommorow = parseInt($dayTommorow);
-        $dayTommorow = $dayTommorow + 1;
-        $dayTommorow.toString();
+    $lists.map((item) => {
+      // tommorow
+      let $dayTommorow = 0;
+      $dayTommorow = $date.getDate();
+      $dayTommorow = parseInt($dayTommorow);
+      $dayTommorow = $dayTommorow + 1;
+      $dayTommorow.toString();
 
-        if ($date.getDate() < 10) {
-          $dayTommorow = "0" + $dayTommorow;
-        } else {
-          $dayTommorow = $dayTommorow;
+      if ($date.getDate() < 10) {
+        $dayTommorow = "0" + $dayTommorow;
+      } else {
+        $dayTommorow = $dayTommorow;
+      }
+
+      let getTimesDtText = item.dt_txt.slice(11, 13);
+      let getFullDate = item.dt_txt.slice(0, 10);
+
+      let $tommorowDate = `${$date.getFullYear()}-${
+        $date.getMonth() + 1
+      }-${$dayTommorow}`;
+
+      let $tommorowDateTxt = `${$date.getFullYear()}/${
+        $date.getMonth() + 1
+      }/${$dayTommorow}`;
+
+      if (getFullDate == $tommorowDate) {
+        tempMaxArr.push(item.main.temp_max);
+        tempMinArr.push(item.main.temp_min);
+
+        // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
+        // tempminTommorow = Math.round(item.main.temp_min) + "°";
+        getFullDateTommorow = $tommorowDateTxt;
+        tommorowTxt = "Tomorrow";
+        tommorowCurrent = item.weather[0].description;
+        tommorowIcon = item.weather[0].icon;
+
+        // icon
+        let $weatherIconTomorrow = item.weather[0].icon;
+
+        switch ($weatherIconTomorrow) {
+          case "01d":
+            $srcTomorrow = "src/icons/800.png";
+            break;
+          case "01n":
+            $srcTomorrow = "src/icons/01n.png";
+            break;
+
+          case "02d":
+            $srcTomorrow = "src/icons/02d.png";
+            break;
+          case "02n":
+            $srcTomorrow = "src/icons/02n.png";
+            break;
+          case "03d":
+            $srcTomorrow = "src/icons/801.png";
+            break;
+          case "03n":
+            $srcTomorrow = "src/icons/801.png";
+            break;
+          case "04d":
+            $srcTomorrow = "src/icons/04.png";
+            break;
+          case "04n":
+            $srcTomorrow = "src/icons/04.png";
+            break;
+          case "09d":
+            $srcTomorrow = "src/icons/301.png";
+            break;
+          case "09n":
+            $srcTomorrow = "src/icons/301.png";
+            break;
+          case "10d":
+            $srcTomorrow = "src/icons/10d.png";
+            break;
+          case "10n":
+            $srcTomorrow = "src/icons/10n.png";
+            break;
+          case "11d":
+            $srcTomorrow = "src/icons/202.png";
+            break;
+          case "11n":
+            $srcTomorrow = "src/icons/202.png";
+            break;
+          case "13d":
+            $srcTomorrow = "src/icons/600.png";
+            break;
+          case "13n":
+            $srcTomorrow = "src/icons/600.png";
+            break;
+          case "50d":
+            $srcTomorrow = "src/icons/65.png";
+            break;
+          case "50n":
+            $srcTomorrow = "src/icons/65.png";
+            break;
+          default:
+            console.log("error");
+
+            break;
         }
+      }
 
-        let getTimesDtText = item.dt_txt.slice(11, 13);
-        let getFullDate = item.dt_txt.slice(0, 10);
+      if (tempMaxArr.length > 0 && tempMinArr.length > 0) {
+        tempMaxTommorow = Math.round(Math.max(...tempMaxArr)) + "°";
+        tempminTommorow = Math.round(Math.min(...tempMinArr)) + "°";
+      }
+    });
 
-        let $tommorowDate = `${$date.getFullYear()}-${
-          $date.getMonth() + 1
-        }-${$dayTommorow}`;
-
-        let $tommorowDateTxt = `${$date.getFullYear()}/${
-          $date.getMonth() + 1
-        }/${$dayTommorow}`;
-
-        if (getFullDate == $tommorowDate) {
-          tempMaxArr.push(item.main.temp_max);
-          tempMinArr.push(item.main.temp_min);
-
-          // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
-          // tempminTommorow = Math.round(item.main.temp_min) + "°";
-          getFullDateTommorow = $tommorowDateTxt;
-          tommorowTxt = "Tomorrow";
-          tommorowCurrent = item.weather[0].description;
-          tommorowIcon = item.weather[0].icon;
-
-          // icon
-          let $weatherIconTomorrow = item.weather[0].icon;
-
-          switch ($weatherIconTomorrow) {
-            case "01d":
-              $srcTomorrow = "src/icons/800.png";
-              break;
-            case "01n":
-              $srcTomorrow = "src/icons/01n.png";
-              break;
-
-            case "02d":
-              $srcTomorrow = "src/icons/02d.png";
-              break;
-            case "02n":
-              $srcTomorrow = "src/icons/02n.png";
-              break;
-            case "03d":
-              $srcTomorrow = "src/icons/801.png";
-              break;
-            case "03n":
-              $srcTomorrow = "src/icons/801.png";
-              break;
-            case "04d":
-              $srcTomorrow = "src/icons/04.png";
-              break;
-            case "04n":
-              $srcTomorrow = "src/icons/04.png";
-              break;
-            case "09d":
-              $srcTomorrow = "src/icons/301.png";
-              break;
-            case "09n":
-              $srcTomorrow = "src/icons/301.png";
-              break;
-            case "10d":
-              $srcTomorrow = "src/icons/10d.png";
-              break;
-            case "10n":
-              $srcTomorrow = "src/icons/10n.png";
-              break;
-            case "11d":
-              $srcTomorrow = "src/icons/202.png";
-              break;
-            case "11n":
-              $srcTomorrow = "src/icons/202.png";
-              break;
-            case "13d":
-              $srcTomorrow = "src/icons/600.png";
-              break;
-            case "13n":
-              $srcTomorrow = "src/icons/600.png";
-              break;
-            case "50d":
-              $srcTomorrow = "src/icons/65.png";
-              break;
-            case "50n":
-              $srcTomorrow = "src/icons/65.png";
-              break;
-            default:
-              console.log("error");
-
-              break;
-          }
-        }
-
-        if (tempMaxArr.length > 0 && tempMinArr.length > 0) {
-          tempMaxTommorow = Math.round(Math.max(...tempMaxArr)) + "°";
-          tempminTommorow = Math.round(Math.min(...tempMinArr)) + "°";
-        }
-      });
-
-      $forecat5day.innerHTML += `
+    $forecat5day.innerHTML += `
         <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-3">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrow}"/>
@@ -580,130 +578,130 @@ function weatherApi() {
         <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrent}</h5>
         </div>`;
 
-      //////////////////////////////////////// end tomorrow
+    //////////////////////////////////////// end tomorrow
 
-      //////////////////////////////////// Day after tomorrow
+    //////////////////////////////////// Day after tomorrow
 
-      let tempMaxTommorowA = 0;
-      let tempminTommorowA = 0;
-      let getFullDateTommorowA = "";
-      let tommorowTxtA = "";
-      let tommorowCurrentA = "";
-      let tommorowIconA = "";
-      let $srcTomorrowA = "";
+    let tempMaxTommorowA = 0;
+    let tempminTommorowA = 0;
+    let getFullDateTommorowA = "";
+    let tommorowTxtA = "";
+    let tommorowCurrentA = "";
+    let tommorowIconA = "";
+    let $srcTomorrowA = "";
 
-      let tempMaxArrA = [];
-      let tempMinArrA = [];
+    let tempMaxArrA = [];
+    let tempMinArrA = [];
 
-      $lists.map((item) => {
-        // tommorow
-        let $dayTommorowA = 0;
-        $dayTommorowA = $date.getDate();
-        $dayTommorowA = parseInt($dayTommorowA);
-        $dayTommorowA = $dayTommorowA + 2;
-        $dayTommorowA.toString();
+    $lists.map((item) => {
+      // tommorow
+      let $dayTommorowA = 0;
+      $dayTommorowA = $date.getDate();
+      $dayTommorowA = parseInt($dayTommorowA);
+      $dayTommorowA = $dayTommorowA + 2;
+      $dayTommorowA.toString();
 
-        if ($date.getDate() < 10) {
-          $dayTommorowA = "0" + $dayTommorowA;
-        } else {
-          $dayTommorowA = $dayTommorowA;
+      if ($date.getDate() < 10) {
+        $dayTommorowA = "0" + $dayTommorowA;
+      } else {
+        $dayTommorowA = $dayTommorowA;
+      }
+
+      let getTimesDtTextA = item.dt_txt.slice(11, 13);
+      let getFullDateA = item.dt_txt.slice(0, 10);
+
+      let $tommorowDateA = `${$date.getFullYear()}-${
+        $date.getMonth() + 1
+      }-${$dayTommorowA}`;
+
+      let $tommorowDateTxtA = `${$date.getFullYear()}/${
+        $date.getMonth() + 1
+      }/${$dayTommorowA}`;
+
+      if (getFullDateA == $tommorowDateA) {
+        tempMaxArrA.push(item.main.temp_max);
+        tempMinArrA.push(item.main.temp_min);
+
+        // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
+        // tempminTommorow = Math.round(item.main.temp_min) + "°";
+        getFullDateTommorowA = $tommorowDateTxtA;
+        tommorowTxtA = "In Two Days";
+        tommorowCurrentA = item.weather[0].description;
+        tommorowIconA = item.weather[0].icon;
+
+        // icon
+        let $weatherIconTomorrowA = item.weather[0].icon;
+
+        switch ($weatherIconTomorrowA) {
+          case "01d":
+            $srcTomorrowA = "src/icons/800.png";
+            break;
+          case "01n":
+            $srcTomorrowA = "src/icons/01n.png";
+            break;
+
+          case "02d":
+            $srcTomorrowA = "src/icons/02d.png";
+            break;
+          case "02n":
+            $srcTomorrowA = "src/icons/02n.png";
+            break;
+          case "03d":
+            $srcTomorrowA = "src/icons/801.png";
+            break;
+          case "03n":
+            $srcTomorrowA = "src/icons/801.png";
+            break;
+          case "04d":
+            $srcTomorrowA = "src/icons/04.png";
+            break;
+          case "04n":
+            $srcTomorrowA = "src/icons/04.png";
+            break;
+          case "09d":
+            $srcTomorrowA = "src/icons/301.png";
+            break;
+          case "09n":
+            $srcTomorrowA = "src/icons/301.png";
+            break;
+          case "10d":
+            $srcTomorrowA = "src/icons/10d.png";
+            break;
+          case "10n":
+            $srcTomorrowA = "src/icons/10n.png";
+            break;
+          case "11d":
+            $srcTomorrowA = "src/icons/202.png";
+            break;
+          case "11n":
+            $srcTomorrowA = "src/icons/202.png";
+            break;
+          case "13d":
+            $srcTomorrowA = "src/icons/600.png";
+            break;
+          case "13n":
+            $srcTomorrowA = "src/icons/600.png";
+            break;
+          case "50d":
+            $srcTomorrowA = "src/icons/65.png";
+            break;
+          case "50n":
+            $srcTomorrowA = "src/icons/65.png";
+            break;
+          default:
+            console.log("error");
+
+            break;
         }
+      }
 
-        let getTimesDtTextA = item.dt_txt.slice(11, 13);
-        let getFullDateA = item.dt_txt.slice(0, 10);
+      if (tempMaxArrA.length > 0 && tempMinArrA.length > 0) {
+        tempMaxTommorowA = Math.round(Math.max(...tempMaxArrA)) + "°";
+        tempminTommorowA = Math.round(Math.min(...tempMinArrA)) + "°";
+      }
+    });
 
-        let $tommorowDateA = `${$date.getFullYear()}-${
-          $date.getMonth() + 1
-        }-${$dayTommorowA}`;
-
-        let $tommorowDateTxtA = `${$date.getFullYear()}/${
-          $date.getMonth() + 1
-        }/${$dayTommorowA}`;
-
-        if (getFullDateA == $tommorowDateA) {
-          tempMaxArrA.push(item.main.temp_max);
-          tempMinArrA.push(item.main.temp_min);
-
-          // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
-          // tempminTommorow = Math.round(item.main.temp_min) + "°";
-          getFullDateTommorowA = $tommorowDateTxtA;
-          tommorowTxtA = "In Two Days";
-          tommorowCurrentA = item.weather[0].description;
-          tommorowIconA = item.weather[0].icon;
-
-          // icon
-          let $weatherIconTomorrowA = item.weather[0].icon;
-
-          switch ($weatherIconTomorrowA) {
-            case "01d":
-              $srcTomorrowA = "src/icons/800.png";
-              break;
-            case "01n":
-              $srcTomorrowA = "src/icons/01n.png";
-              break;
-
-            case "02d":
-              $srcTomorrowA = "src/icons/02d.png";
-              break;
-            case "02n":
-              $srcTomorrowA = "src/icons/02n.png";
-              break;
-            case "03d":
-              $srcTomorrowA = "src/icons/801.png";
-              break;
-            case "03n":
-              $srcTomorrowA = "src/icons/801.png";
-              break;
-            case "04d":
-              $srcTomorrowA = "src/icons/04.png";
-              break;
-            case "04n":
-              $srcTomorrowA = "src/icons/04.png";
-              break;
-            case "09d":
-              $srcTomorrowA = "src/icons/301.png";
-              break;
-            case "09n":
-              $srcTomorrowA = "src/icons/301.png";
-              break;
-            case "10d":
-              $srcTomorrowA = "src/icons/10d.png";
-              break;
-            case "10n":
-              $srcTomorrowA = "src/icons/10n.png";
-              break;
-            case "11d":
-              $srcTomorrowA = "src/icons/202.png";
-              break;
-            case "11n":
-              $srcTomorrowA = "src/icons/202.png";
-              break;
-            case "13d":
-              $srcTomorrowA = "src/icons/600.png";
-              break;
-            case "13n":
-              $srcTomorrowA = "src/icons/600.png";
-              break;
-            case "50d":
-              $srcTomorrowA = "src/icons/65.png";
-              break;
-            case "50n":
-              $srcTomorrowA = "src/icons/65.png";
-              break;
-            default:
-              console.log("error");
-
-              break;
-          }
-        }
-
-        if (tempMaxArrA.length > 0 && tempMinArrA.length > 0) {
-          tempMaxTommorowA = Math.round(Math.max(...tempMaxArrA)) + "°";
-          tempminTommorowA = Math.round(Math.min(...tempMinArrA)) + "°";
-        }
-      });
-
-      $forecat5day.innerHTML += `
+    $forecat5day.innerHTML += `
         <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-3">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowA}"/>
@@ -716,7 +714,142 @@ function weatherApi() {
         <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentA}</h5>
         </div>`;
 
-      // end Day after tomorrow
+    // end Day after tomorrow
+
+    //////////////////////////////////// in 3 days
+
+    let tempMaxTommorowIn3 = 0;
+    let tempminTommorowIn3 = 0;
+    let getFullDateTommorowIn3 = "";
+    let tommorowTxtIn3 = "";
+    let tommorowCurrentIn3 = "";
+    let tommorowIconIn3 = "";
+    let $srcTomorrowIn3 = "";
+
+    let tempMaxArrIn3 = [];
+    let tempMinArrIn3 = [];
+
+    $lists.map((item) => {
+      // tommorow
+      let $dayTommorowIn3 = 0;
+      $dayTommorowIn3 = $date.getDate();
+      $dayTommorowIn3 = parseInt($dayTommorowIn3);
+      $dayTommorowIn3 = $dayTommorowIn3 + 3;
+      $dayTommorowIn3.toString();
+
+      if ($date.getDate() < 10) {
+        $dayTommorowIn3 = "0" + $dayTommorowIn3;
+      } else {
+        $dayTommorowIn3 = $dayTommorowIn3;
+      }
+
+      let getFullDateIn3 = item.dt_txt.slice(0, 10);
+
+      let $tommorowDateIn3 = `${$date.getFullYear()}-${
+        $date.getMonth() + 1
+      }-${$dayTommorowIn3}`;
+
+      let $tommorowDateTxtIn3 = `${$date.getFullYear()}/${
+        $date.getMonth() + 1
+      }/${$dayTommorowIn3}`;
+
+      if (getFullDateIn3 == $tommorowDateIn3) {
+        tempMaxArrIn3.push(item.main.temp_max);
+        tempMinArrIn3.push(item.main.temp_min);
+
+        // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
+        // tempminTommorow = Math.round(item.main.temp_min) + "°";
+        getFullDateTommorowIn3 = $tommorowDateTxtIn3;
+        tommorowTxtIn3 = "In Three Days";
+        tommorowCurrentIn3 = item.weather[0].description;
+        tommorowIconIn3 = item.weather[0].icon;
+
+        // icon
+        let $weatherIconTomorrowIn3 = item.weather[0].icon;
+
+        switch ($weatherIconTomorrowIn3) {
+          case "01d":
+            $srcTomorrowIn3 = "src/icons/800.png";
+            break;
+          case "01n":
+            $srcTomorrowIn3 = "src/icons/01n.png";
+            break;
+
+          case "02d":
+            $srcTomorrowIn3 = "src/icons/02d.png";
+            break;
+          case "02n":
+            $srcTomorrowIn3 = "src/icons/02n.png";
+            break;
+          case "03d":
+            $srcTomorrowIn3 = "src/icons/801.png";
+            break;
+          case "03n":
+            $srcTomorrowIn3 = "src/icons/801.png";
+            break;
+          case "04d":
+            $srcTomorrowIn3 = "src/icons/04.png";
+            break;
+          case "04n":
+            $srcTomorrowIn3 = "src/icons/04.png";
+            break;
+          case "09d":
+            $srcTomorrowIn3 = "src/icons/301.png";
+            break;
+          case "09n":
+            $srcTomorrowIn3 = "src/icons/301.png";
+            break;
+          case "10d":
+            $srcTomorrowIn3 = "src/icons/10d.png";
+            break;
+          case "10n":
+            $srcTomorrowIn3 = "src/icons/10n.png";
+            break;
+          case "11d":
+            $srcTomorrowIn3 = "src/icons/202.png";
+            break;
+          case "11n":
+            $srcTomorrowIn3 = "src/icons/202.png";
+            break;
+          case "13d":
+            $srcTomorrowIn3 = "src/icons/600.png";
+            break;
+          case "13n":
+            $srcTomorrowIn3 = "src/icons/600.png";
+            break;
+          case "50d":
+            $srcTomorrowIn3 = "src/icons/65.png";
+            break;
+          case "50n":
+            $srcTomorrowIn3 = "src/icons/65.png";
+            break;
+          default:
+            console.log("error");
+
+            break;
+        }
+      }
+
+      if (tempMaxArrIn3.length > 0 && tempMinArrIn3.length > 0) {
+        tempMaxTommorowIn3 = Math.round(Math.max(...tempMaxArrIn3)) + "°";
+        tempminTommorowIn3 = Math.round(Math.min(...tempMinArrIn3)) + "°";
+      }
+    });
+
+    $forecat5day.innerHTML += `
+        <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="flex gap-3">
+          <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn3}"/>
+          <div class="pt-3 md:pt-11">
+            <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtIn3}</h2>
+            <h3 class="font-semibold text-sm md:text-[16px] text-white">${getFullDateTommorowIn3}</h3>
+            <h3 class="font-semibold text-sm md:text-[16px] text-white">${tempMaxTommorowIn3}/${tempminTommorowIn3}</h3>
+          </div>
+        </div>
+        <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentIn3}</h5>
+        </div>`;
+
+    // end in 3 days
   });
 }
 weatherApi();

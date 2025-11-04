@@ -19,9 +19,8 @@ let $locationBlack = document.querySelector("#locationBlack");
 let $locationWhite = document.querySelector("#locationWhite");
 let $shadowWhite = document.querySelector("#shadowWhite");
 
-// dark light theme
 let $updatingDot = document.querySelector("#updatingDot");
-
+/////////////////////////// dark light theme
 $btnDarkLight.addEventListener("click", () => {
   $btnDarkLightWrapper.classList.toggle("bg-[#ececec]");
   $btnDarkLightWrapper.classList.toggle("bg-[#222222f6]");
@@ -56,6 +55,15 @@ $btnDarkLight.addEventListener("click", () => {
   $searchBtn.classList.toggle("bg-[#222222f6]");
 
   $search.classList.toggle("placeholder:text-white");
+
+  // visibilty section
+  let $visibiltiesWrapper = document.querySelector("#visibiltiesWrapper");
+  $visibiltiesWrapper.classList.toggle("bg-[#FFFFFF]");
+  $visibiltiesWrapper.classList.toggle("shadow-black");
+  $visibiltiesWrapper.classList.toggle("md:shadow-black/40");
+  $visibiltiesWrapper.classList.toggle("shadow-white/15");
+  $visibiltiesWrapper.classList.toggle("md:shadow-[#FFFEFE]/10");
+  $visibiltiesWrapper.classList.toggle("bg-[#FFFEFE]/6");
 });
 
 async function asynAwait(url) {

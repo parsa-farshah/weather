@@ -341,6 +341,9 @@
   .w-\[215px\] {
     width: 215px;
   }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
@@ -444,6 +447,24 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-\[\#00000066\]\/20 {
+    border-color: color-mix(in oklab, #00000066 20%, transparent);
+  }
+  .border-\[\#00000066\]\/40 {
+    border-color: color-mix(in oklab, #00000066 40%, transparent);
+  }
+  .border-\[\#FFFFFF33\] {
+    border-color: #FFFFFF33;
+  }
+  .border-\[\#FFFFFF33\]\/20 {
+    border-color: color-mix(in oklab, #FFFFFF33 20%, transparent);
+  }
+  .border-\[\#FFFFFF33\]\/40 {
+    border-color: color-mix(in oklab, #FFFFFF33 40%, transparent);
+  }
+  .border-\[\#FFFFFF33\]\/50 {
+    border-color: color-mix(in oklab, #FFFFFF33 50%, transparent);
+  }
   .border-\[\#b6b6b6ce\] {
     border-color: #b6b6b6ce;
   }
@@ -453,8 +474,26 @@
   .bg-\[\#00000066\] {
     background-color: #00000066;
   }
+  .bg-\[\#00000066\]\/40 {
+    background-color: color-mix(in oklab, #00000066 40%, transparent);
+  }
+  .bg-\[\#00000066\]\/60 {
+    background-color: color-mix(in oklab, #00000066 60%, transparent);
+  }
+  .bg-\[\#00000066\]\/80 {
+    background-color: color-mix(in oklab, #00000066 80%, transparent);
+  }
   .bg-\[\#222222f6\] {
     background-color: #222222f6;
+  }
+  .bg-\[\#363637\] {
+    background-color: #363637;
+  }
+  .bg-\[\#363637\]\/20 {
+    background-color: color-mix(in oklab, #363637 20%, transparent);
+  }
+  .bg-\[\#363637\]\/80 {
+    background-color: color-mix(in oklab, #363637 80%, transparent);
   }
   .bg-\[\#FFFEFE\] {
     background-color: #FFFEFE;
@@ -464,6 +503,12 @@
   }
   .bg-\[\#FFFEFE\]\/20 {
     background-color: color-mix(in oklab, #FFFEFE 20%, transparent);
+  }
+  .bg-\[\#FFFFFF33\]\/20 {
+    background-color: color-mix(in oklab, #FFFFFF33 20%, transparent);
+  }
+  .bg-\[\#FFFFFF33\]\/80 {
+    background-color: color-mix(in oklab, #FFFFFF33 80%, transparent);
   }
   .bg-\[\#FFFFFF\] {
     background-color: #FFFFFF;
@@ -623,9 +668,37 @@
   .underline {
     text-decoration-line: underline;
   }
+  .shadow {
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-\[\#FFFFFF40\] {
+    --tw-shadow-color: #FFFFFF40;
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, #FFFFFF40 var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-\[\#FFFFFF40\]\/5 {
+    --tw-shadow-color: color-mix(in srgb, #FFFFFF40 5%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, #FFFFFF40 5%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-\[\#FFFFFF40\]\/25 {
+    --tw-shadow-color: color-mix(in srgb, #FFFFFF40 25%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, #FFFFFF40 25%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-\[\#FFFFFF40\]\/80 {
+    --tw-shadow-color: color-mix(in srgb, #FFFFFF40 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, #FFFFFF40 80%, transparent) var(--tw-shadow-alpha), transparent);
+    }
   }
   .shadow-black {
     --tw-shadow-color: #000;
@@ -705,6 +778,16 @@
       width: 20%;
     }
   }
+  .md\:w-\[30\%\] {
+    @media (width >= 48rem) {
+      width: 30%;
+    }
+  }
+  .md\:w-\[35\%\] {
+    @media (width >= 48rem) {
+      width: 35%;
+    }
+  }
   .md\:w-\[40\%\] {
     @media (width >= 48rem) {
       width: 40%;
@@ -723,6 +806,11 @@
   .md\:w-\[80px\] {
     @media (width >= 48rem) {
       width: 80px;
+    }
+  }
+  .md\:w-fit {
+    @media (width >= 48rem) {
+      width: fit-content;
     }
   }
   .md\:text-3xl {

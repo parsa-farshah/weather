@@ -64,6 +64,18 @@ $btnDarkLight.addEventListener("click", () => {
   $visibiltiesWrapper.classList.toggle("shadow-white/15");
   $visibiltiesWrapper.classList.toggle("md:shadow-[#FFFEFE]/10");
   $visibiltiesWrapper.classList.toggle("bg-[#FFFEFE]/6");
+
+  // WeatherNow hours
+
+  let $WeatherNow = document.querySelectorAll(".WeatherNow");
+  $WeatherNow.forEach((item) => {
+    item.classList.toggle("bg-[#00000066]/80");
+    item.classList.toggle("border-[#00000066]/40");
+    item.classList.toggle("shadow-[#FFFFFF40]/25");
+    item.classList.toggle("border-[#FFFFFF33]/50");
+    item.classList.toggle("shadow-[#FFFFFF40]/25");
+    item.classList.toggle("bg-[#FFFFFF33]/80");
+  });
 });
 
 async function asynAwait(url) {
@@ -371,8 +383,8 @@ function weatherApi() {
           getTimesDtText = getTimesDtText + " AM";
         }
 
-        $daysWrapper.innerHTML += `<div
-  class="w-[60px] h-[146px] bg-[#00000066] shadow-black md:shadow-black/40 shadow-2xl rounded-[30px] flex flex-col py-4"
+        $daysWrapper.innerHTML += `<div 
+  class="WeatherNow w-[60px] h-[146px] bg-[#00000066]/80 border border-[#00000066]/40 shadow-[#FFFFFF40]/25 shadow-2xl rounded-[30px] flex flex-col py-4"
 >
   <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">${getTimesDtText}</h3>
   <img  class="w-[80%] h-[50px] mx-auto mt-3" src="${$src12}" alt="" />

@@ -176,6 +176,7 @@ $searchBtn.addEventListener("click", () => {
     nameCitySearch = $search.value;
     weatherApi();
     unsplashApi();
+    mapApi();
     $search.value = "";
     $search.focus();
   }
@@ -1047,21 +1048,48 @@ $homeBtn.addEventListener("click", () => {
   $sectionWeatherCurrent.classList.add("flex");
 });
 
+////////////////////////////////////////// unsplash API
 let $unsplashImg = document.querySelector("#unsplashImg");
 function unsplashApi() {
-  console.log(nameCitySearch);
-
   asynAwait(
     `https://api.unsplash.com/search/photos?query=${nameCitySearch}&client_id=smhJYs6efkWq2MNJMlDHWSIj00i5Z8W0rZ9GD5OntsE`
   ).then((val) => {
     let $srcUnsplash = val.results[3].urls.full;
-    console.log(val);
-
-    console.log($unsplashImg);
     $unsplashImg.setAttribute("src", `${$srcUnsplash}`);
   });
 }
 unsplashApi();
+
+////////////////////////////////////////// map API
+let $mapVal = "tehran";
+function mapApi() {
+  asynAwait(
+    `
+http://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
+  ).then((val) => {
+    const container = document.getElementById("mapContainer");
+    container.innerHTML = "";
+
+    let $lat = val[0].lat;
+    let $lon = val[0].lon;
+
+    const delta = 0.2; // محدوده اطراف شهر
+    const bbox = `${$lon - delta},${$lat - delta},${$lon + delta},${
+      $lat + delta
+    }`;
+
+    const iframe = document.createElement("iframe");
+    iframe.width = "600";
+    iframe.height = "450";
+    iframe.style.border = "0";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+    iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${$lat},${$lon}`;
+
+    container.appendChild(iframe);
+  });
+}
+mapApi();
 
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 

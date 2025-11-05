@@ -179,6 +179,7 @@ $searchBtn.addEventListener("click", () => {
     $search.focus();
   }
 });
+let $sectionWeatherCurrent = document.querySelector("#sectionWeatherCurrent");
 
 function weatherApi() {
   asynAwait(
@@ -343,15 +344,8 @@ function weatherApi() {
 
     let $lists = result.list;
     $lists.map((item) => {
-      // console.log(item);
-
       let getTimesDtText = item.dt_txt.slice(11, 13);
       let getFullDate = item.dt_txt.slice(0, 10);
-      // console.log(getTimesDtText);
-      // console.log(getFullDate);
-      // console.log($todayDate);
-      // if (getFullDate == $todayDate && getTimesDtText == "12") {
-      // }
 
       if (getFullDate == $todayDate) {
         // add icon for 12pm
@@ -449,16 +443,18 @@ function weatherApi() {
     // btn 5day forecast
     // hidden others
     let $fiveDayBtn = document.querySelector("#fiveDayBtn");
-    let $sectionWeatherCurrent = document.querySelector(
-      "#sectionWeatherCurrent"
-    );
 
     // arrow left click back to main page
     let $arrL4day = document.querySelector("#arrL4day");
 
-    $arrL4day.addEventListener("click",()=>{
-      
-    })
+    $arrL4day.addEventListener("click", () => {
+      $sectionWeatherCurrent.classList.remove("hidden");
+      // add section
+      $forecat5day.classList.remove("flex");
+      $forecat5day.classList.add("hidden");
+
+      $arrL4day.classList.add("hidden");
+    });
 
     //////////////////////////// click on 5 days
     $fiveDayBtn.addEventListener("click", () => {
@@ -1014,6 +1010,37 @@ function weatherApi() {
   });
 }
 weatherApi();
+
+//////////////////////////////////////////////////// map click
+let $mapBtn = document.querySelector("#mapBtn");
+$mapBtn.addEventListener("click", () => {
+  $mapBtn.classList.remove("bg-[#000000]/20");
+  $mapBtn.classList.add("bg-[#000000]/50");
+
+  // home remove bg
+  $homeBtn.classList.remove("bg-[#000000]/50");
+  $homeBtn.classList.add("bg-[#000000]/20");
+
+  // remove page home
+  $sectionWeatherCurrent.classList.add("hidden");
+});
+
+//////////////////////////////////////////////////////////////// home click
+let $homeBtn = document.querySelector("#homeBtn");
+$homeBtn.addEventListener("click", () => {
+  $mapBtn.classList.remove("bg-[#000000]/50");
+  $mapBtn.classList.add("bg-[#000000]/20");
+
+  // home remove bg
+  $homeBtn.classList.remove("bg-[#000000]/20");
+  $homeBtn.classList.add("bg-[#000000]/50");
+
+  // remove page home
+  $sectionWeatherCurrent.classList.remove("hidden");
+  $sectionWeatherCurrent.classList.add("flex");
+});
+
+
 
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 

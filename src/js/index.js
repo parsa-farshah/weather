@@ -182,6 +182,7 @@ $searchBtn.addEventListener("click", () => {
   }
 });
 let $sectionWeatherCurrent = document.querySelector("#sectionWeatherCurrent");
+let $arrL4day = document.querySelector("#arrL4day");
 
 function weatherApi() {
   asynAwait(
@@ -447,7 +448,6 @@ function weatherApi() {
     let $fiveDayBtn = document.querySelector("#fiveDayBtn");
 
     // arrow left click back to main page
-    let $arrL4day = document.querySelector("#arrL4day");
 
     $arrL4day.addEventListener("click", () => {
       $sectionWeatherCurrent.classList.remove("hidden");
@@ -1018,6 +1018,8 @@ let $mapDiv = document.querySelector("#mapDiv");
 //////////////////////////////////////////////////// map click
 let $mapBtn = document.querySelector("#mapBtn");
 $mapBtn.addEventListener("click", () => {
+  $forecat5day.classList.add("hidden");
+
   $mapBtn.classList.remove("bg-[#000000]/20");
   $mapBtn.classList.add("bg-[#000000]/50");
 
@@ -1031,6 +1033,8 @@ $mapBtn.addEventListener("click", () => {
   // map div add
   $mapDiv.classList.remove("hidden");
   $mapDiv.classList.remove("flex");
+  // arrow left
+  $arrL4day.classList.add("hidden");
 });
 
 //////////////////////////////////////////////////////////////// home click
@@ -1046,6 +1050,8 @@ $homeBtn.addEventListener("click", () => {
   // remove page home
   $sectionWeatherCurrent.classList.remove("hidden");
   $sectionWeatherCurrent.classList.add("flex");
+
+  $mapDiv.classList.add("hidden");
 });
 
 ////////////////////////////////////////// unsplash API
@@ -1068,6 +1074,7 @@ function mapApi() {
 http://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
   ).then((val) => {
     const container = document.getElementById("mapContainer");
+    // reset
     container.innerHTML = "";
 
     let $lat = val[0].lat;
@@ -1084,7 +1091,7 @@ http://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b
 
     const map = L.map("map", { tap: false }).setView([$lat, $lon], 11);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
       maxZoom: 19,
@@ -1125,8 +1132,11 @@ http://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b
             data.address.town ||
             data.address.village ||
             "Unknown";
-          alert("City: " + city);
+          // alert("City: " + city);
           nameCitySearch = city;
+          // resting
+          $forecat5day.innerHTML = "";
+          $daysWrapper.innerHTML = "";
           weatherApi();
           unsplashApi();
           mapApi();

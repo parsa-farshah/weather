@@ -1040,7 +1040,14 @@ $homeBtn.addEventListener("click", () => {
   $sectionWeatherCurrent.classList.add("flex");
 });
 
-
+function unsplashApi() {
+  asynAwait(
+    `https://api.unsplash.com/search/photos?query=${nameCitySearch}&client_id=smhJYs6efkWq2MNJMlDHWSIj00i5Z8W0rZ9GD5OntsE`
+  ).then((val) => {
+    console.log(val);
+  });
+}
+unsplashApi();
 
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 

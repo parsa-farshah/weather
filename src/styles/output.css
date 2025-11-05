@@ -195,6 +195,9 @@
   .-top-24 {
     top: calc(var(--spacing) * -24);
   }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
   .top-1 {
     top: calc(var(--spacing) * 1);
   }
@@ -203,6 +206,9 @@
   }
   .right-2 {
     right: calc(var(--spacing) * 2);
+  }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
   }
   .left-\[22\%\] {
     left: 22%;

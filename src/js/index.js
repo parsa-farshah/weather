@@ -77,6 +77,7 @@ $btnDarkLight.addEventListener("click", () => {
     item.classList.toggle("bg-[#FFFFFF33]/80");
   });
 
+  // 4days arrow right
   let $arrowNxt4day = document.querySelector("#arrowNxt4day");
   let arrowNxt4dayAtt = $arrowNxt4day.getAttribute("stroke");
   if (arrowNxt4dayAtt == "black") {
@@ -85,6 +86,13 @@ $btnDarkLight.addEventListener("click", () => {
     $arrowNxt4day.setAttribute("stroke", "black");
   }
 
+  let $arrL4day = document.querySelector("#arrL4day");
+  let arrL4day = $arrL4day.getAttribute("stroke");
+  if (arrL4day == "black") {
+    $arrL4day.setAttribute("stroke", "white");
+  } else {
+    $arrL4day.setAttribute("stroke", "black");
+  }
   // navbar
   let $nav = document.querySelector("#nav");
 
@@ -445,8 +453,18 @@ function weatherApi() {
       "#sectionWeatherCurrent"
     );
 
+    // arrow left click back to main page
+    let $arrL4day = document.querySelector("#arrL4day");
+
+    $arrL4day.addEventListener("click",()=>{
+      
+    })
+
     //////////////////////////// click on 5 days
     $fiveDayBtn.addEventListener("click", () => {
+      $arrL4day.classList.remove("hidden");
+      $arrL4day.classList.add("flex");
+
       $sectionWeatherCurrent.classList.add("hidden");
       // add section
       $forecat5day.classList.remove("hidden");

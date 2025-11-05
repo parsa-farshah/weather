@@ -121,7 +121,26 @@
           </div>
         </div>
         <!---------------------------------------- updating --------------->
-        <div class="w-full flex justify-center items-center mt-4 gap-7">
+        <div
+          class="w-[90%] mx-auto flex justify-center items-center mt-4 gap-7 relative"
+        >
+          <!-- arrowLeft for 4days show -->
+          <svg
+            id="arrL4day"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="black"
+            class="absolute left-0 -translate-y-1/2 top-1/2 w-5 h-5 hidden"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+
           <!-- updating -->
           <div class="border px-5 py-0.5 rounded-4xl flex items-center gap-3">
             <div
@@ -253,7 +272,8 @@
                 <span class="font-semibold text-[13px] capitalize"
                   >next 4 Days</span
                 >
-                <svg id="arrowNxt4day"
+                <svg
+                  id="arrowNxt4day"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"

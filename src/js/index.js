@@ -77,6 +77,14 @@ $btnDarkLight.addEventListener("click", () => {
     item.classList.toggle("bg-[#FFFFFF33]/80");
   });
 
+  let $arrowNxt4day = document.querySelector("#arrowNxt4day");
+  let arrowNxt4dayAtt = $arrowNxt4day.getAttribute("stroke");
+  if (arrowNxt4dayAtt == "black") {
+    $arrowNxt4day.setAttribute("stroke", "white");
+  } else {
+    $arrowNxt4day.setAttribute("stroke", "black");
+  }
+
   // navbar
   let $nav = document.querySelector("#nav");
 
@@ -985,8 +993,6 @@ function weatherApi() {
         </div>`;
 
     // end in 4 days
-
-   
   });
 }
 weatherApi();

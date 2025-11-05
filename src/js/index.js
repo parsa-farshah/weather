@@ -1073,20 +1073,65 @@ http://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b
     let $lat = val[0].lat;
     let $lon = val[0].lon;
 
-    const delta = 0.2; // محدوده اطراف شهر
-    const bbox = `${$lon - delta},${$lat - delta},${$lon + delta},${
-      $lat + delta
-    }`;
+    const mapDiv = document.createElement("div");
+    mapDiv.id = "map";
+    mapDiv.style.width = "100%";
+    mapDiv.style.height = "400px";
+    mapDiv.style.borderRadius = "16px";
+    mapDiv.style.boxShadow = "0 0 20px rgba(0,0,0,0.3)";
+    mapDiv.style.border = "1 solid rgba(0,0,0,0.3)";
+    container.appendChild(mapDiv);
 
-    const iframe = document.createElement("iframe");
-    iframe.width = "600";
-    iframe.height = "450";
-    iframe.style.border = "0";
-    iframe.allowFullscreen = true;
-    iframe.loading = "lazy";
-    iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${$lat},${$lon}`;
+    const map = L.map("map", { tap: false }).setView([$lat, $lon], 11);
 
-    container.appendChild(iframe);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    let initialMarker = L.marker([$lat, $lon])
+      .addTo(map)
+      .bindPopup(nameCitySearch)
+      .openPopup();
+
+    let lastMarker = null;
+
+    // هم روی دسکتاپ و هم موبایل کار می‌کند
+    map.on("click", function (e) {
+      const lat = e.latlng.lat;
+      const lon = e.latlng.lng;
+
+      if (initialMarker) {
+        map.removeLayer(initialMarker);
+        initialMarker = null;
+      }
+
+      // پاک کردن مارکر قبلی (اختیاری)
+      if (lastMarker) {
+        map.removeLayer(lastMarker);
+      }
+
+      // ایجاد مارکر جدید روی محل کلیک
+      lastMarker = L.marker([lat, lon]).addTo(map);
+
+      fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=en`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const city =
+            data.address.city ||
+            data.address.town ||
+            data.address.village ||
+            "Unknown";
+          alert("City: " + city);
+          nameCitySearch = city;
+          weatherApi();
+          unsplashApi();
+          mapApi();
+        });
+    });
   });
 }
 mapApi();

@@ -10,6 +10,10 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="src/images/logo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
   </head>
   <body class="w-full h-full">
     <!---------------------------------- loading --------------------->
@@ -312,7 +316,10 @@
             src=""
             alt=""
           />
-          <div class="w-[500px] h-[500px] border overflow-hidden" id="mapContainer"></div>
+          <div
+            class="w-[300px] h-[300px] border overflow-hidden rounded-4xl"
+            id="mapContainer"
+          ></div>
         </div>
 
         <!-------------------------------------- navbar ------------------->
@@ -421,15 +428,5 @@
     </main>
   </body>
   <script src="src/js/index.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </html>
-
-<!-- <div
-  class="w-[60px] h-[146px] bg-[#00000066] shadow-black md:shadow-black/40 shadow-2xl rounded-[30px] flex flex-col py-4"
->
-  <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">12 PM</h3>
-  <img id="twelvePm" class="w-[80%] h-[50px] mx-auto mt-3" src="" alt="" />
-  <h5
-    id="temp12Pm"
-    class="font-semibold text-[15px] text-center text-[#FFFFFF] mt-3"
-  ></h5>
-</div> -->

@@ -175,6 +175,7 @@ $searchBtn.addEventListener("click", () => {
   } else {
     nameCitySearch = $search.value;
     weatherApi();
+    unsplashApi();
     $search.value = "";
     $search.focus();
   }
@@ -1011,6 +1012,8 @@ function weatherApi() {
 }
 weatherApi();
 
+let $mapDiv = document.querySelector("#mapDiv");
+
 //////////////////////////////////////////////////// map click
 let $mapBtn = document.querySelector("#mapBtn");
 $mapBtn.addEventListener("click", () => {
@@ -1023,6 +1026,10 @@ $mapBtn.addEventListener("click", () => {
 
   // remove page home
   $sectionWeatherCurrent.classList.add("hidden");
+
+  // map div add
+  $mapDiv.classList.remove("hidden");
+  $mapDiv.classList.remove("flex");
 });
 
 //////////////////////////////////////////////////////////////// home click
@@ -1040,11 +1047,18 @@ $homeBtn.addEventListener("click", () => {
   $sectionWeatherCurrent.classList.add("flex");
 });
 
+let $unsplashImg = document.querySelector("#unsplashImg");
 function unsplashApi() {
+  console.log(nameCitySearch);
+
   asynAwait(
     `https://api.unsplash.com/search/photos?query=${nameCitySearch}&client_id=smhJYs6efkWq2MNJMlDHWSIj00i5Z8W0rZ9GD5OntsE`
   ).then((val) => {
+    let $srcUnsplash = val.results[3].urls.full;
     console.log(val);
+
+    console.log($unsplashImg);
+    $unsplashImg.setAttribute("src", `${$srcUnsplash}`);
   });
 }
 unsplashApi();

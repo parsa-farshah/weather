@@ -253,6 +253,9 @@
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
+  .mt-20 {
+    margin-top: calc(var(--spacing) * 20);
+  }
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
@@ -296,6 +299,9 @@
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
+  .h-\[00px\] {
+    height: 00px;
+  }
   .h-\[23px\] {
     height: 23px;
   }
@@ -334,6 +340,15 @@
   }
   .h-\[200px\] {
     height: 200px;
+  }
+  .h-\[300px\] {
+    height: 300px;
+  }
+  .h-\[400px\] {
+    height: 400px;
+  }
+  .h-\[500px\] {
+    height: 500px;
   }
   .h-full {
     height: 100%;
@@ -415,6 +430,12 @@
   }
   .w-\[200px\] {
     width: 200px;
+  }
+  .w-\[400px\] {
+    width: 400px;
+  }
+  .w-\[500px\] {
+    width: 500px;
   }
   .w-full {
     width: 100%;
@@ -617,6 +638,21 @@
     --tw-gradient-position: to top in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
+  .bg-\[url\(\)\] {
+    background-image: url();
+  }
+  .bg-\[url\(\.\.\/\)\] {
+    background-image: url(../);
+  }
+  .bg-\[url\(\.\.\/images\/\)\] {
+    background-image: url(../images/);
+  }
+  .bg-\[url\(\.\.\/images\/bgMap\)\] {
+    background-image: url(../images/bgMap);
+  }
+  .bg-\[url\(\.\.\/images\/bgMap\.png\)\] {
+    background-image: url(../images/bgMap.png);
+  }
   .from-\[\#7B7883\] {
     --tw-gradient-from: #7B7883;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -639,14 +675,26 @@
   .to-95\% {
     --tw-gradient-to-position: 95%;
   }
+  .bg-cover {
+    background-size: cover;
+  }
   .bg-clip-text {
     background-clip: text;
+  }
+  .bg-bottom {
+    background-position: bottom;
+  }
+  .bg-top {
+    background-position: top;
   }
   .object-contain {
     object-fit: contain;
   }
   .object-cover {
     object-fit: cover;
+  }
+  .object-top {
+    object-position: top;
   }
   .p-1 {
     padding: calc(var(--spacing) * 1);

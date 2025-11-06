@@ -1034,6 +1034,9 @@ function weatherApi() {
 
     let $day4MaxTempDate = getFullDateTommorowIn3;
     let $day4MaxTemp = Math.round(Math.max(...tempMaxArrIn3));
+
+    let $day5MaxTempDate = getFullDateTommorowIn4;
+    let $day5MaxTemp = Math.round(Math.max(...tempMaxArrIn4));
     // end in 4 days
 
     // chartttttttttttttttttttttttttt
@@ -1052,19 +1055,17 @@ function weatherApi() {
           `${$tomorrowMaxTempDate}`,
           `${$day3MaxTempDate}`,
           `${$day4MaxTempDate}`,
-          "Purple",
-          "Orange",
+          `${$day5MaxTempDate}`,
         ],
         datasets: [
           {
-            label: "# of Votes",
+            label: "Max Temp",
             data: [
               $todayMaxTemp,
               $tomorrowMaxTemp,
               $day3MaxTemp,
               $day4MaxTemp,
-              2,
-              3,
+              $day5MaxTemp,
             ],
             borderWidth: 1,
           },

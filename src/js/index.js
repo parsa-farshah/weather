@@ -1051,7 +1051,7 @@ function weatherApi() {
       type: "bar",
       data: {
         labels: [
-          `${$todayMaxTempDate}`,
+          `Today`,
           `${$tomorrowMaxTempDate}`,
           `${$day3MaxTempDate}`,
           `${$day4MaxTempDate}`,

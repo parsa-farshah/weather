@@ -608,6 +608,12 @@
   .bg-\[url\(\.\.\/images\/bgMap\.png\)\] {
     background-image: url(../images/bgMap.png);
   }
+  .bg-\[url\(\.\.\/images\/bgMapBlack\.png\)\] {
+    background-image: url(../images/bgMapBlack.png);
+  }
+  .bg-\[url\(\.\.\/images\/bgMapBlack2\.png\)\] {
+    background-image: url(../images/bgMapBlack2.png);
+  }
   .from-\[\#7B7883\] {
     --tw-gradient-from: #7B7883;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -630,11 +636,17 @@
   .to-95\% {
     --tw-gradient-to-position: 95%;
   }
+  .bg-contain {
+    background-size: contain;
+  }
   .bg-cover {
     background-size: cover;
   }
   .bg-clip-text {
     background-clip: text;
+  }
+  .bg-no-repeat {
+    background-repeat: no-repeat;
   }
   .object-contain {
     object-fit: contain;
@@ -744,6 +756,12 @@
   }
   .underline {
     text-decoration-line: underline;
+  }
+  .opacity-10 {
+    opacity: 10%;
+  }
+  .opacity-50 {
+    opacity: 50%;
   }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));

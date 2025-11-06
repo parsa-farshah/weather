@@ -20,7 +20,11 @@ let $locationWhite = document.querySelector("#locationWhite");
 let $shadowWhite = document.querySelector("#shadowWhite");
 
 let $updatingDot = document.querySelector("#updatingDot");
-/////////////////////////// dark light theme
+
+// map div
+let $mapDiv = document.querySelector("#mapDiv");
+
+///////////////////////////////////////////////////// dark light theme
 $btnDarkLight.addEventListener("click", () => {
   $btnDarkLightWrapper.classList.toggle("bg-[#ececec]");
   $btnDarkLightWrapper.classList.toggle("bg-[#222222f6]");
@@ -121,6 +125,10 @@ $btnDarkLight.addEventListener("click", () => {
       val.setAttribute("stroke", "#000000");
     }
   });
+
+  // bg div map
+  $mapDiv.classList.toggle("bg-[url(../images/bgMap.png)]");
+  $mapDiv.classList.toggle("bg-[url(../images/bgMapBlack2.png)]");
 });
 
 async function asynAwait(url) {
@@ -1013,8 +1021,6 @@ function weatherApi() {
 }
 weatherApi();
 
-let $mapDiv = document.querySelector("#mapDiv");
-
 //////////////////////////////////////////////////// map click
 let $mapBtn = document.querySelector("#mapBtn");
 $mapBtn.addEventListener("click", () => {
@@ -1061,6 +1067,8 @@ let $unsplashImg3 = document.querySelector("#unsplashImg3");
 let $unsplashImg4 = document.querySelector("#unsplashImg4");
 let $unsplashImg5 = document.querySelector("#unsplashImg5");
 let $unsplashImg6 = document.querySelector("#unsplashImg6");
+console.log($unsplashImg6);
+
 function unsplashApi() {
   $loading.classList.remove("hidden");
   $loading.classList.add("flex");
@@ -1073,6 +1081,8 @@ function unsplashApi() {
     let $srcUnsplash4 = val.results[4].urls.regular;
     let $srcUnsplash5 = val.results[5].urls.regular;
     let $srcUnsplash6 = val.results[6].urls.regular;
+    console.log($srcUnsplash6);
+
     $unsplashImg.setAttribute("src", `${$srcUnsplash}`);
     $unsplashImg2.setAttribute("src", `${$srcUnsplash2}`);
     $unsplashImg3.setAttribute("src", `${$srcUnsplash3}`);
@@ -1101,8 +1111,7 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
 
     let $lat = val[0].lat;
     let $lon = val[0].lon;
-
-    const mapDiv = document.createElement("div");
+    let mapDiv = document.createElement("div");
     mapDiv.id = "map";
     mapDiv.style.width = "100%";
     mapDiv.style.height = "400px";

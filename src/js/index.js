@@ -1071,7 +1071,7 @@ let $mapVal = "tehran";
 function mapApi() {
   asynAwait(
     `
-http://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
+https://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
   ).then((val) => {
     const container = document.getElementById("mapContainer");
     // reset

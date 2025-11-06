@@ -1056,12 +1056,34 @@ $homeBtn.addEventListener("click", () => {
 
 ////////////////////////////////////////// unsplash API
 let $unsplashImg = document.querySelector("#unsplashImg");
+let $unsplashImg2 = document.querySelector("#unsplashImg2");
+let $unsplashImg3 = document.querySelector("#unsplashImg3");
+let $unsplashImg4 = document.querySelector("#unsplashImg4");
+let $unsplashImg5 = document.querySelector("#unsplashImg5");
+let $unsplashImg6 = document.querySelector("#unsplashImg6");
 function unsplashApi() {
+  $loading.classList.remove("hidden");
+  $loading.classList.add("flex");
   asynAwait(
     `https://api.unsplash.com/search/photos?query=${nameCitySearch}&client_id=smhJYs6efkWq2MNJMlDHWSIj00i5Z8W0rZ9GD5OntsE`
   ).then((val) => {
-    let $srcUnsplash = val.results[3].urls.full;
+    let $srcUnsplash = val.results[1].urls.regular;
+    let $srcUnsplash2 = val.results[2].urls.regular;
+    let $srcUnsplash3 = val.results[3].urls.regular;
+    let $srcUnsplash4 = val.results[4].urls.regular;
+    let $srcUnsplash5 = val.results[5].urls.regular;
+    let $srcUnsplash6 = val.results[6].urls.regular;
     $unsplashImg.setAttribute("src", `${$srcUnsplash}`);
+    $unsplashImg2.setAttribute("src", `${$srcUnsplash2}`);
+    $unsplashImg3.setAttribute("src", `${$srcUnsplash3}`);
+    $unsplashImg4.setAttribute("src", `${$srcUnsplash4}`);
+    $unsplashImg5.setAttribute("src", `${$srcUnsplash5}`);
+    $unsplashImg6.setAttribute("src", `${$srcUnsplash6}`);
+
+    $unsplashImg.onload = () => {
+      $loading.classList.remove("flex");
+      $loading.classList.add("hidden");
+    };
   });
 }
 unsplashApi();
@@ -1071,7 +1093,7 @@ let $mapVal = "tehran";
 function mapApi() {
   asynAwait(
     `
-https://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}`
+https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit=1&accept-language=en`
   ).then((val) => {
     const container = document.getElementById("mapContainer");
     // reset
@@ -1084,7 +1106,7 @@ https://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957
     mapDiv.id = "map";
     mapDiv.style.width = "100%";
     mapDiv.style.height = "400px";
-    mapDiv.style.borderRadius = "16px";
+    // mapDiv.style.borderRadius = "16px";
     mapDiv.style.boxShadow = "0 0 20px rgba(0,0,0,0.3)";
     mapDiv.style.border = "1 solid rgba(0,0,0,0.3)";
     container.appendChild(mapDiv);
@@ -1132,7 +1154,12 @@ https://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957
             data.address.town ||
             data.address.village ||
             "Unknown";
-          // alert("City: " + city);
+
+          // if (city == "Unknown") {
+          //   nameCitySearch = "tehran";
+          //   const map = L.map("map", { tap: false }).setView([$lat, $lon], 11);
+          // }
+
           nameCitySearch = city;
           // resting
           $forecat5day.innerHTML = "";
@@ -1145,6 +1172,31 @@ https://api.openweathermap.org/geo/1.0/direct?appid=14da3e989046810485f4fe023957
   });
 }
 mapApi();
+
+const progressCircle = document.querySelector(".autoplay-progress svg");
+const progressContent = document.querySelector(".autoplay-progress span");
+var swiper = new Swiper(".mySwiper", {
+  spaceBetween: 30,
+  centeredSlides: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  on: {
+    autoplayTimeLeft(s, time, progress) {
+      progressCircle.style.setProperty("--progress", 1 - progress);
+      progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+    },
+  },
+});
 
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 

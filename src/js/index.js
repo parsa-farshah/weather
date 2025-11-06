@@ -158,8 +158,14 @@ let $daysWrapper = document.querySelector("#daysWrapper");
 
 let $forecat5day = document.querySelector("#forecat5day");
 
+let $myChart = document.querySelector("myChart");
+let weatherChart = null;
+
 ///////////////////////////////////////////////////// search button click
 $searchBtn.addEventListener("click", () => {
+  if (weatherChart) {
+    weatherChart.destroy();
+  }
   // reseting
   $forecat5day.innerHTML = "";
   $daysWrapper.innerHTML = "";
@@ -1042,12 +1048,15 @@ function weatherApi() {
     // chartttttttttttttttttttttttttt
 
     //////////////////////////////////////// add chart
+    if (weatherChart) {
+      weatherChart.destroy();
+    }
 
     $tomorrowMaxTemp = Math.round(Math.max(...tempMaxArrIn4));
 
     const ctx = document.getElementById("myChart");
 
-    new Chart(ctx, {
+    weatherChart = new Chart(ctx, {
       type: "bar",
       data: {
         labels: [
@@ -1313,7 +1322,6 @@ var swiper = new Swiper(".mySwiper", {
     },
   },
 });
-
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 
 // https://api.openweathermap.org/data/2.5/forecast?q=tehran&units=metric&appid=14da3e989046810485f4fe023957b34b

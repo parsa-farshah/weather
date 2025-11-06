@@ -214,12 +214,12 @@ function weatherApi() {
     // city add in document
     $city.innerText = "";
     $city.innerText = `${result.city.name}`;
-    $city.classList.add("text-xl", "md:text-3xl", "font-black");
+    $city.classList.add("text-sm", "md:text-3xl", "font-black");
     $cityName.appendChild($city);
 
     // country add in document
     $country.innerText = `${result.city.country}`;
-    $country.classList.add("text-sm", "mt-1.5", "font-black", "md:text-lg");
+    $country.classList.add("text-[10px]", "mt-1.5", "font-black", "md:text-lg");
     $cityName.appendChild($country);
 
     // wheater main

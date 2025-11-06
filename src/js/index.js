@@ -192,6 +192,10 @@ $searchBtn.addEventListener("click", () => {
 let $sectionWeatherCurrent = document.querySelector("#sectionWeatherCurrent");
 let $arrL4day = document.querySelector("#arrL4day");
 
+// chart value
+let $todayMaxTemp = 0;
+let $tomorrowMaxTemp = 0;
+
 function weatherApi() {
   asynAwait(
     `https://api.openweathermap.org/data/2.5/forecast?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}&units=metric`
@@ -243,6 +247,8 @@ function weatherApi() {
     let $tempMaxMin = document.querySelector("#tempMaxMin");
     let $tempMin = Math.round(result.list[0].main.temp_min) + "°";
     let $tempMax = Math.round(result.list[0].main.temp_max) + "°";
+
+    $todayMaxTemp = Math.round(result.list[0].main.temp_min);
 
     let $tempMaxMinVal = ` ${$tempMax}/${$tempMin}`;
     $tempMaxMin.innerText = $tempMaxMinVal;
@@ -340,6 +346,7 @@ function weatherApi() {
       $date.getMonth() + 1
     }/${$date.getDate()}/${$date.getFullYear()}`;
 
+    let $todayMaxTempDate = $currentDate;
     $currentDateWrapper.innerText = $currentDate;
 
     //////////////////////////////////// data for today other hour weather
@@ -495,13 +502,13 @@ function weatherApi() {
       $dayTommorow = $date.getDate();
       $dayTommorow = parseInt($dayTommorow);
       $dayTommorow = $dayTommorow + 1;
-      $dayTommorow.toString();
 
-      if ($date.getDate() < 10) {
+      if ($dayTommorow < 10) {
         $dayTommorow = "0" + $dayTommorow;
       } else {
         $dayTommorow = $dayTommorow;
       }
+      $dayTommorow.toString();
 
       let getTimesDtText = item.dt_txt.slice(11, 13);
       let getFullDate = item.dt_txt.slice(0, 10);
@@ -595,6 +602,8 @@ function weatherApi() {
         tempMaxTommorow = Math.round(Math.max(...tempMaxArr)) + "°";
         tempminTommorow = Math.round(Math.min(...tempMinArr)) + "°";
       }
+
+      $tomorrowMaxTemp = Math.round(Math.max(...tempMaxArr));
     });
 
     $forecat5day.innerHTML += `
@@ -609,6 +618,8 @@ function weatherApi() {
         </div>
         <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrent}</h5>
         </div>`;
+
+    let $tomorrowMaxTempDate = getFullDateTommorow;
 
     //////////////////////////////////////// end tomorrow
 
@@ -631,13 +642,14 @@ function weatherApi() {
       $dayTommorowA = $date.getDate();
       $dayTommorowA = parseInt($dayTommorowA);
       $dayTommorowA = $dayTommorowA + 2;
-      $dayTommorowA.toString();
 
-      if ($date.getDate() < 10) {
+      if ($dayTommorowA < 10) {
         $dayTommorowA = "0" + $dayTommorowA;
       } else {
         $dayTommorowA = $dayTommorowA;
       }
+
+      $dayTommorowA.toString();
 
       let getTimesDtTextA = item.dt_txt.slice(11, 13);
       let getFullDateA = item.dt_txt.slice(0, 10);
@@ -746,6 +758,8 @@ function weatherApi() {
         <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentA}</h5>
         </div>`;
 
+    let $day3MaxTempDate = getFullDateTommorowA;
+    let $day3MaxTemp = Math.round(Math.max(...tempMaxArrA));
     // end Day after tomorrow
 
     //////////////////////////////////// in 3 days
@@ -767,13 +781,14 @@ function weatherApi() {
       $dayTommorowIn3 = $date.getDate();
       $dayTommorowIn3 = parseInt($dayTommorowIn3);
       $dayTommorowIn3 = $dayTommorowIn3 + 3;
-      $dayTommorowIn3.toString();
 
-      if ($date.getDate() < 10) {
+      if ($dayTommorowIn3 < 10) {
         $dayTommorowIn3 = "0" + $dayTommorowIn3;
       } else {
         $dayTommorowIn3 = $dayTommorowIn3;
       }
+
+      $dayTommorowIn3.toString();
 
       let getFullDateIn3 = item.dt_txt.slice(0, 10);
 
@@ -902,13 +917,12 @@ function weatherApi() {
       $dayTommorowIn4 = $date.getDate();
       $dayTommorowIn4 = parseInt($dayTommorowIn4);
       $dayTommorowIn4 = $dayTommorowIn4 + 4;
-      $dayTommorowIn4.toString();
 
-      if ($date.getDate() < 10) {
+      if ($dayTommorowIn4 < 10) {
         $dayTommorowIn4 = "0" + $dayTommorowIn4;
-      } else {
-        $dayTommorowIn4 = $dayTommorowIn4;
       }
+
+      $dayTommorowIn4.toString();
 
       let getFullDateIn4 = item.dt_txt.slice(0, 10);
 
@@ -920,12 +934,13 @@ function weatherApi() {
         $date.getMonth() + 1
       }/${$dayTommorowIn4}`;
 
+      console.log($tommorowDateTxtIn4);
+      console.log($tommorowDateIn4);
+
       if (getFullDateIn4 == $tommorowDateIn4) {
         tempMaxArrIn4.push(item.main.temp_max);
         tempMinArrIn4.push(item.main.temp_min);
 
-        // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
-        // tempminTommorow = Math.round(item.main.temp_min) + "°";
         getFullDateTommorowIn4 = $tommorowDateTxtIn4;
         tommorowTxtIn4 = "In Four Days";
         tommorowCurrentIn4 = item.weather[0].description;
@@ -1017,14 +1032,86 @@ function weatherApi() {
         </div>`;
 
     // end in 4 days
+
+    // chartttttttttttttttttttttttttt
+
+    //////////////////////////////////////// add chart
+
+    $tomorrowMaxTemp = Math.round(Math.max(...tempMaxArrIn4));
+
+    const ctx = document.getElementById("myChart");
+
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          `${$todayMaxTempDate}`,
+          `${$tomorrowMaxTempDate}`,
+          `${$day3MaxTempDate}`,
+          "Green",
+          "Purple",
+          "Orange",
+        ],
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [$todayMaxTemp, $tomorrowMaxTemp, $day3MaxTemp, 5, 2, 3],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
   });
 }
 weatherApi();
+
+/////////////////////////////////////////////// cahrt page Btn click
+
+let $chartPage = document.querySelector("#chartPage");
+let $chartBtn = document.querySelector("#chartBtn");
+
+$chartBtn.addEventListener("click", () => {
+  $forecat5day.classList.add("hidden");
+
+  $mapBtn.classList.remove("bg-[#000000]/50");
+  $mapBtn.classList.add("bg-[#000000]/20");
+
+  // home remove bg
+  $homeBtn.classList.remove("bg-[#000000]/50");
+  $homeBtn.classList.add("bg-[#000000]/20");
+
+  // chart remove bg
+  $chartBtn.classList.remove("bg-[#000000]/20");
+  $chartBtn.classList.add("bg-[#000000]/50");
+
+  // remove page home
+  $sectionWeatherCurrent.classList.add("hidden");
+
+  // map div add
+  $mapDiv.classList.remove("flex");
+  $mapDiv.classList.add("hidden");
+  // arrow left
+  $arrL4day.classList.add("hidden");
+
+  $chartPage.classList.remove("hidden");
+  $chartPage.classList.add("block");
+});
 
 //////////////////////////////////////////////////// map click
 let $mapBtn = document.querySelector("#mapBtn");
 $mapBtn.addEventListener("click", () => {
   $forecat5day.classList.add("hidden");
+
+  // chart remove bg
+  $chartBtn.classList.remove("bg-[#000000]/50");
+  $chartBtn.classList.add("bg-[#000000]/20");
 
   $mapBtn.classList.remove("bg-[#000000]/20");
   $mapBtn.classList.add("bg-[#000000]/50");
@@ -1038,9 +1125,12 @@ $mapBtn.addEventListener("click", () => {
 
   // map div add
   $mapDiv.classList.remove("hidden");
-  $mapDiv.classList.remove("flex");
+  $mapDiv.classList.add("flex");
   // arrow left
   $arrL4day.classList.add("hidden");
+
+  // chart js
+  $chartPage.classList.add("hidden");
 });
 
 //////////////////////////////////////////////////////////////// home click
@@ -1048,6 +1138,10 @@ let $homeBtn = document.querySelector("#homeBtn");
 $homeBtn.addEventListener("click", () => {
   $mapBtn.classList.remove("bg-[#000000]/50");
   $mapBtn.classList.add("bg-[#000000]/20");
+
+  // chart remove bg
+  $chartBtn.classList.remove("bg-[#000000]/50");
+  $chartBtn.classList.add("bg-[#000000]/20");
 
   // home remove bg
   $homeBtn.classList.remove("bg-[#000000]/20");
@@ -1058,9 +1152,12 @@ $homeBtn.addEventListener("click", () => {
   $sectionWeatherCurrent.classList.add("flex");
 
   $mapDiv.classList.add("hidden");
+
+  // chart js
+  $chartPage.classList.add("hidden");
 });
 
-////////////////////////////////////////// unsplash API
+//////////////////////////////////////////////////////////////// unsplash API
 let $unsplashImg = document.querySelector("#unsplashImg");
 let $unsplashImg2 = document.querySelector("#unsplashImg2");
 let $unsplashImg3 = document.querySelector("#unsplashImg3");
@@ -1098,7 +1195,7 @@ function unsplashApi() {
 }
 unsplashApi();
 
-////////////////////////////////////////// map API
+/////////////////////////////////////////////////// map API
 let $mapVal = "tehran";
 function mapApi() {
   asynAwait(
@@ -1114,10 +1211,7 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
     let mapDiv = document.createElement("div");
     mapDiv.id = "map";
     mapDiv.style.width = "100%";
-    mapDiv.style.height = "400px";
-    // mapDiv.style.borderRadius = "16px";
-    mapDiv.style.boxShadow = "0 0 20px rgba(0,0,0,0.3)";
-    mapDiv.style.border = "1 solid rgba(0,0,0,0.3)";
+    mapDiv.style.height = "500px";
     container.appendChild(mapDiv);
 
     const map = L.map("map", { tap: false }).setView([$lat, $lon], 11);
@@ -1181,6 +1275,8 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
   });
 }
 mapApi();
+
+//////////////////////////////////////////////// slider swiper
 
 const progressCircle = document.querySelector(".autoplay-progress svg");
 const progressContent = document.querySelector(".autoplay-progress span");

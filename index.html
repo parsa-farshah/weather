@@ -22,23 +22,23 @@
       /* .swiper {
         width: 100%;
         height: 100%;
-      }
+      }  */
 
-      .swiper-slide {
+      /* .swiper-slide {
         text-align: center;
         font-size: 18px;
         background: #444;
         display: flex;
         justify-content: center;
         align-items: center;
-      }
+      } */
 
-      .swiper-slide img {
+      /* .swiper-slide img {
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
-      } */
+      }  */
 
       .autoplay-progress {
         position: absolute;
@@ -366,20 +366,23 @@
           id="forecat5day"
           class="w-[95%] md:w-[90%] relative mx-auto mt-10 md:mt-4 justify-between duration-700 hidden flex-wrap gap-y-4"
         ></div>
-        <!-- map page -->
+      </div>
+      <!-------------------------------------- map page ----------------------->
+      <div
+        id="mapDiv"
+        class="w-full px-[10%] mx-auto bg-[url(../images/bgMap.png)] bg-contain bg-no-repeat hidden mt-6 gap-4 flex-wrap justify-center"
+      >
+        <!-- slider -->
         <div
-          id="mapDiv"
-          class="w-full py-20 bg-[url(../images/bgMap.png)] bg-contain bg-no-repeat hidden mt-20"
+          class="w-[90%] md:w-[45%] h-[500px] overflow-hidden border border-[#ffffff8a] rounded-4xl"
         >
-          <div
-            class="swiper mySwiper w-[90%] md:w-1/2 h-[500px] overflow-hidden"
-          >
+          <div class="swiper mySwiper rounded-4xl w-full h-full">
             <div class="swiper-wrapper w-full h-full">
               <!-- image1 -->
               <div class="swiper-slide w-full">
                 <img
                   id="unsplashImg"
-                  class="w-full h-full object-cover rounded-t-4xl"
+                  class="w-full h-full object-cover rounded-4xl"
                   src=""
                   alt=""
                   loading="lazy"
@@ -389,7 +392,7 @@
               <div class="swiper-slide w-full h-full">
                 <img
                   id="unsplashImg2"
-                  class="w-full h-full object-cover mx-auto rounded-t-4xl"
+                  class="w-full h-full object-cover mx-auto rounded-4xl"
                   src=""
                   alt=""
                   loading="lazy"
@@ -399,7 +402,7 @@
               <div class="swiper-slide w-full h-full">
                 <img
                   id="unsplashImg3"
-                  class="w-full h-full object-cover mx-auto rounded-t-4xl"
+                  class="w-full h-full object-cover mx-auto rounded-4xl"
                   src=""
                   alt=""
                   loading="lazy"
@@ -409,7 +412,7 @@
               <div class="swiper-slide w-full h-full">
                 <img
                   id="unsplashImg4"
-                  class="w-full h-full object-cover mx-auto rounded-t-4xl"
+                  class="w-full h-full object-cover mx-auto rounded-4xl"
                   src=""
                   alt=""
                   loading="lazy"
@@ -419,7 +422,7 @@
               <div class="swiper-slide w-full h-full">
                 <img
                   id="unsplashImg5"
-                  class="w-full h-full object-cover mx-auto rounded-t-4xl"
+                  class="w-full h-full object-cover mx-auto rounded-4xl"
                   src=""
                   alt=""
                   loading="lazy"
@@ -429,7 +432,7 @@
               <div class="swiper-slide w-full h-full">
                 <img
                   id="unsplashImg6"
-                  class="w-full h-full object-cover mx-auto rounded-t-4xl"
+                  class="w-full h-full object-cover mx-auto rounded-4xl"
                   src=""
                   alt=""
                   loading="lazy"
@@ -446,118 +449,128 @@
               <span></span>
             </div>
           </div>
-          <div
-            class="w-[90%] md:w-1/2 mx-auto h-[300px] border rounded-b-4xl relative z-20 overflow-hidden"
-            id="mapContainer"
-          ></div>
         </div>
 
-        <!-------------------------------------- navbar ------------------->
+        <!-- map container -->
         <div
-          id="nav"
-          class="w-[90%] md:w-[60%] h-[90px] bg-[#FFFFFF] shadow-black shadow-2xl md:shadow-black/40 mt-4 mx-auto rounded-[100px] mb-10"
-        >
-          <ul
-            id="navUl"
-            class="flex justify-around h-full items-center *:bg-[#000000]/20 *:w-[22%] *:h-[80%] *:md:w-[15%] *:flex *:justify-center *:duration-500 *:overflow-hidden *:items-center *:rounded-full"
-          >
-            <!-- home -->
-            <li>
-              <div
-                id="homeBtn"
-                class="w-full h-full bg-[#000000]/50 flex justify-center items-center cursor-pointer group"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                  />
-                </svg>
-              </div>
-            </li>
-            <!-- location -->
-            <li>
-              <div
-                id="mapBtn"
-                class="w-full h-full flex justify-center items-center group cursor-pointer"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
-              </div>
-            </li>
-            <!-- chart -->
-            <li>
-              <div
-                class="w-full h-full flex justify-center items-center group cursor-pointer"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"
-                  />
-                </svg>
-              </div>
-            </li>
-            <!-- nottif -->
-            <li>
-              <div
-                class="w-full h-full flex justify-center items-center group cursor-pointer"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="#000000"
-                  class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
-                  />
-                </svg>
-              </div>
-            </li>
-          </ul>
+          class="w-[90%] md:w-[45%] h-[500px] border border-[#ffffff8a] rounded-4xl relative z-20 overflow-hidden"
+          id="mapContainer"
+        ></div>
+      </div>
+
+      <!-------------------------------------- chart page -------------------->
+      <section id="chartPage" class="hidden mt-4">
+        <div class="border w-[80%] mx-auto">
+          <canvas id="myChart"></canvas>
         </div>
+      </section>
+
+      <!-------------------------------------- navbar ------------------->
+      <div
+        id="nav"
+        class="w-[90%] md:w-[60%] h-[90px] bg-[#FFFFFF] shadow-black shadow-2xl md:shadow-black/40 mt-4 mx-auto rounded-[100px] mb-10"
+      >
+        <ul
+          id="navUl"
+          class="flex justify-around h-full items-center *:bg-[#000000]/20 *:w-[22%] *:h-[80%] *:md:w-[15%] *:flex *:justify-center *:duration-500 *:overflow-hidden *:items-center *:rounded-full"
+        >
+          <!-- home -->
+          <li>
+            <div
+              id="homeBtn"
+              class="w-full h-full bg-[#000000]/50 flex justify-center items-center cursor-pointer group"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#000000"
+                class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                />
+              </svg>
+            </div>
+          </li>
+          <!-- location -->
+          <li>
+            <div
+              id="mapBtn"
+              class="w-full h-full flex justify-center items-center group cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#000000"
+                class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <!-- chart -->
+          <li>
+            <div id="chartBtn"
+              class="w-full h-full flex justify-center items-center group cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#000000"
+                class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"
+                />
+              </svg>
+            </div>
+          </li>
+          <!-- nottif -->
+          <li>
+            <div
+              class="w-full h-full flex justify-center items-center group cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#000000"
+                class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
       </div>
     </main>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="src/js/index.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </html>

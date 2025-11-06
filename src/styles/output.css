@@ -275,6 +275,9 @@
   .mb-10 {
     margin-bottom: calc(var(--spacing) * 10);
   }
+  .block {
+    display: block;
+  }
   .flex {
     display: flex;
   }
@@ -548,6 +551,18 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-r {
+    border-right-style: var(--tw-border-style);
+    border-right-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-l {
+    border-left-style: var(--tw-border-style);
+    border-left-width: 1px;
+  }
   .border-\[\#3d3d3d\] {
     border-color: #3d3d3d;
   }
@@ -562,6 +577,24 @@
   }
   .border-\[\#b8b8b8b2\] {
     border-color: #b8b8b8b2;
+  }
+  .border-\[\#ffffff8a\] {
+    border-color: #ffffff8a;
+  }
+  .border-r-\[\#ffff\] {
+    border-right-color: #ffff;
+  }
+  .border-r-\[\#ffffff8a\] {
+    border-right-color: #ffffff8a;
+  }
+  .border-r-\[\#ffffffb4\] {
+    border-right-color: #ffffffb4;
+  }
+  .border-b-\[\#ffffff8a\] {
+    border-bottom-color: #ffffff8a;
+  }
+  .border-l-\[\#ffffff8a\] {
+    border-left-color: #ffffff8a;
   }
   .bg-\[\#000000\]\/20 {
     background-color: color-mix(in oklab, #000000 20%, transparent);
@@ -638,6 +671,9 @@
   .bg-contain {
     background-size: contain;
   }
+  .bg-cover {
+    background-size: cover;
+  }
   .bg-clip-text {
     background-clip: text;
   }
@@ -667,6 +703,9 @@
   }
   .px-\[5\%\] {
     padding-inline: 5%;
+  }
+  .px-\[10\%\] {
+    padding-inline: 10%;
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
@@ -1029,6 +1068,11 @@
   .md\:w-\[250px\] {
     @media (width >= 48rem) {
       width: 250px;
+    }
+  }
+  .md\:w-full {
+    @media (width >= 48rem) {
+      width: 100%;
     }
   }
   .md\:pt-11 {

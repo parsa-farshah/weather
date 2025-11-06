@@ -599,7 +599,7 @@ function weatherApi() {
 
     $forecat5day.innerHTML += `
         <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
-        <div class="flex gap-3">
+        <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrow}"/>
           <div class="pt-3 md:pt-11">
             <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxt}</h2>
@@ -735,7 +735,7 @@ function weatherApi() {
 
     $forecat5day.innerHTML += `
         <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
-        <div class="flex gap-3">
+        <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowA}"/>
           <div class="pt-3 md:pt-11">
             <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtA}</h2>
@@ -870,7 +870,7 @@ function weatherApi() {
 
     $forecat5day.innerHTML += `
         <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
-        <div class="flex gap-3">
+        <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn3}"/>
           <div class="pt-3 md:pt-11">
             <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtIn3}</h2>
@@ -1005,7 +1005,7 @@ function weatherApi() {
 
     $forecat5day.innerHTML += `
         <div class="h-[100px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
-        <div class="flex gap-3">
+        <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn4}"/>
           <div class="pt-3 md:pt-11">
             <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtIn4}</h2>

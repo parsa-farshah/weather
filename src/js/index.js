@@ -1180,6 +1180,7 @@ let $chartPage = document.querySelector("#chartPage");
 let $chartBtn = document.querySelector("#chartBtn");
 
 //////////////////////////////////////////////////// map click
+let $profPage = document.querySelector("#profPage");
 let $prof = document.querySelector("#prof");
 $prof.addEventListener("click", () => {
   $forecat5day.classList.add("hidden");
@@ -1198,9 +1199,13 @@ $prof.addEventListener("click", () => {
   // remove page home
   $sectionWeatherCurrent.classList.add("hidden");
 
-  // map div add
+  // map div remove
   $mapDiv.classList.remove("flex");
   $mapDiv.classList.add("hidden");
+
+  // prof div add
+  $profPage.classList.remove("hidden");
+  $profPage.classList.add("flex");
 
   // arrow left
   $arrL4day.classList.add("hidden");
@@ -1223,6 +1228,10 @@ $chartBtn.addEventListener("click", () => {
   // chart remove bg
   $chartBtn.classList.remove("bg-[#000000]/20");
   $chartBtn.classList.add("bg-[#000000]/50");
+
+  // prof div remove
+  $profPage.classList.remove("flex");
+  $profPage.classList.add("hidden");
 
   // remove page home
   $sectionWeatherCurrent.classList.add("hidden");
@@ -1252,6 +1261,10 @@ $mapBtn.addEventListener("click", () => {
   // home remove bg
   $homeBtn.classList.remove("bg-[#000000]/50");
   $homeBtn.classList.add("bg-[#000000]/20");
+
+  // prof div remove
+  $profPage.classList.remove("flex");
+  $profPage.classList.add("hidden");
 
   // remove page home
   $sectionWeatherCurrent.classList.add("hidden");
@@ -1283,6 +1296,10 @@ $homeBtn.addEventListener("click", () => {
   // remove page home
   $sectionWeatherCurrent.classList.remove("hidden");
   $sectionWeatherCurrent.classList.add("flex");
+
+  // prof div remove
+  $profPage.classList.remove("flex");
+  $profPage.classList.add("hidden");
 
   $mapDiv.classList.add("hidden");
 

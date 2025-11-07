@@ -1179,6 +1179,37 @@ weatherApi();
 let $chartPage = document.querySelector("#chartPage");
 let $chartBtn = document.querySelector("#chartBtn");
 
+//////////////////////////////////////////////////// map click
+let $prof = document.querySelector("#prof");
+$prof.addEventListener("click", () => {
+  $forecat5day.classList.add("hidden");
+
+  // chart remove bg
+  $chartBtn.classList.remove("bg-[#000000]/50");
+  $chartBtn.classList.add("bg-[#000000]/20");
+
+  $mapBtn.classList.remove("bg-[#000000]/50");
+  $mapBtn.classList.add("bg-[#000000]/20");
+
+  // home remove bg
+  $homeBtn.classList.remove("bg-[#000000]/50");
+  $homeBtn.classList.add("bg-[#000000]/20");
+
+  // remove page home
+  $sectionWeatherCurrent.classList.add("hidden");
+
+  // map div add
+  $mapDiv.classList.remove("flex");
+  $mapDiv.classList.add("hidden");
+
+  // arrow left
+  $arrL4day.classList.add("hidden");
+
+  // chart js
+  $chartPage.classList.add("hidden");
+});
+
+// chart click
 $chartBtn.addEventListener("click", () => {
   $forecat5day.classList.add("hidden");
 

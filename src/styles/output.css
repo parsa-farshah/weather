@@ -537,6 +537,9 @@
   .bg-\[\#000000\]\/50 {
     background-color: color-mix(in oklab, #000000 50%, transparent);
   }
+  .bg-\[\#000000\]\/250 {
+    background-color: color-mix(in oklab, #000000 250%, transparent);
+  }
   .bg-\[\#0000003d\] {
     background-color: #0000003d;
   }
@@ -623,6 +626,9 @@
   }
   .bg-clip-text {
     background-clip: text;
+  }
+  .bg-center {
+    background-position: center;
   }
   .bg-no-repeat {
     background-repeat: no-repeat;

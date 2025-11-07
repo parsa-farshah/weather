@@ -4,16 +4,16 @@ let $btnDarkLight = document.getElementById("btnDarkLight");
 let $btnDarkLightWrapper = document.getElementById("btnDarkLightWrapper");
 let $body = document.querySelector("body");
 
-// loading
+////////////////////////////////////////////////////////////// loading
 let $loading = document.querySelector("#loading");
 
-// error search
+//////////////////////////////////////////////////////////////// error search
 let $errorSearch = document.querySelector("#errorSearch");
 
-// error city not found
+////////////////////////////////////////////////////////// error city not found
 let $errorCity = document.querySelector("#errorCity");
 
-// location logo select
+////////////////////////////////////////////////////////// location logo select
 let $shadowBlack = document.querySelector("#shadowBlack");
 let $locationBlack = document.querySelector("#locationBlack");
 let $locationWhite = document.querySelector("#locationWhite");
@@ -21,7 +21,7 @@ let $shadowWhite = document.querySelector("#shadowWhite");
 
 let $updatingDot = document.querySelector("#updatingDot");
 
-// map div
+///////////////////////////////////////////////////// map div
 let $mapDiv = document.querySelector("#mapDiv");
 
 ///////////////////////////////////////////////////// dark light theme
@@ -143,12 +143,12 @@ async function asynAwait(url) {
   }
 }
 
-// select go to h3
+////////////////////////////////////////////////////////// select go to h3
 let $cityName = document.querySelector("#cityName");
 let $city = document.createElement("h3");
 let $country = document.createElement("h3");
 
-// search add to url word
+///////////////////////////////////// search add to url word
 let $search = document.querySelector("#search");
 let $searchBtn = document.querySelector("#searchBtn");
 
@@ -164,39 +164,6 @@ let weatherChartMin = null;
 let weatherCharttoday = null;
 
 ///////////////////////////////////////////////////// search button click
-$searchBtn.addEventListener("click", () => {
-  if (weatherChart) {
-    weatherChart.destroy();
-  }
-  // reseting
-  $forecat5day.innerHTML = "";
-  $daysWrapper.innerHTML = "";
-  // reset when add new city
-  $city.innerText = "";
-  $country.innerText = "";
-  // input value enter to api url
-
-  // cant enter the number or script
-
-  if ($search.value == "" || $search.value.search(/0-9/) !== -1) {
-    $errorSearch.classList.remove("hidden");
-    $errorSearch.classList.add("flex");
-    setTimeout(() => {
-      $errorSearch.classList.remove("flex");
-      $errorSearch.classList.add("hidden");
-    }, 3000);
-    weatherApi();
-    $search.value = "";
-    $search.focus();
-  } else {
-    nameCitySearch = $search.value;
-    weatherApi();
-    unsplashApi();
-    mapApi();
-    $search.value = "";
-    $search.focus();
-  }
-});
 let $sectionWeatherCurrent = document.querySelector("#sectionWeatherCurrent");
 let $arrL4day = document.querySelector("#arrL4day");
 
@@ -485,7 +452,7 @@ function weatherApi() {
     });
 
     // add chart for day temp max
-    let weatherCharttoday = null;
+    weatherCharttoday = null;
 
     if (weatherCharttoday) weatherCharttoday.destroy();
     const ctxToday = document.getElementById("todayChart");
@@ -510,6 +477,7 @@ function weatherApi() {
 
     // btn 5day forecast
     // hidden others
+    let nav = document.querySelector("#nav");
     let $fiveDayBtn = document.querySelector("#fiveDayBtn");
 
     // arrow left click back to main page
@@ -521,6 +489,8 @@ function weatherApi() {
       $forecat5day.classList.add("hidden");
 
       $arrL4day.classList.add("hidden");
+
+      nav.classList.remove("hidden");
     });
 
     //////////////////////////// click on 5 days
@@ -532,6 +502,8 @@ function weatherApi() {
       // add section
       $forecat5day.classList.remove("hidden");
       $forecat5day.classList.add("flex");
+
+      nav.classList.toggle("hidden");
     });
 
     // tommorow
@@ -1167,10 +1139,6 @@ function weatherApi() {
       },
     });
   });
-
-  // min temp chart
-
-  // min temp chart
 }
 weatherApi();
 
@@ -1406,11 +1374,6 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
             data.address.village ||
             "Unknown";
 
-          // if (city == "Unknown") {
-          //   nameCitySearch = "tehran";
-          //   const map = L.map("map", { tap: false }).setView([$lat, $lon], 11);
-          // }
-
           nameCitySearch = city;
           // resting
           $forecat5day.innerHTML = "";
@@ -1449,6 +1412,42 @@ var swiper = new Swiper(".mySwiper", {
       progressContent.textContent = `${Math.ceil(time / 1000)}s`;
     },
   },
+});
+
+///////////////////////////////////////////////////// search button click
+$searchBtn.addEventListener("click", () => {
+  if (weatherChart) weatherChart.destroy();
+  if (weatherChartMin) weatherChartMin.destroy();
+  if (weatherCharttoday) weatherCharttoday.destroy();
+
+  /////////////////////////// reseting
+  $forecat5day.innerHTML = "";
+  $daysWrapper.innerHTML = "";
+  //////////////////////////// reset when add new city
+  $city.innerText = "";
+  $country.innerText = "";
+  ///////////////////////////// input value enter to api url
+
+  //////////////////////////// cant enter the number or script
+
+  if ($search.value == "" || $search.value.search(/0-9/) !== -1) {
+    $errorSearch.classList.remove("hidden");
+    $errorSearch.classList.add("flex");
+    setTimeout(() => {
+      $errorSearch.classList.remove("flex");
+      $errorSearch.classList.add("hidden");
+    }, 3000);
+    weatherApi();
+    $search.value = "";
+    $search.focus();
+  } else {
+    nameCitySearch = $search.value;
+    weatherApi();
+    unsplashApi();
+    mapApi();
+    $search.value = "";
+    $search.focus();
+  }
 });
 // https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
 

@@ -161,6 +161,7 @@ let $forecat5day = document.querySelector("#forecat5day");
 let $myChart = document.querySelector("myChart");
 let weatherChart = null;
 let weatherChartMin = null;
+let weatherCharttoday = null;
 
 ///////////////////////////////////////////////////// search button click
 $searchBtn.addEventListener("click", () => {
@@ -368,7 +369,7 @@ function weatherApi() {
     let $todayMaxTempDate = $currentDate;
     $currentDateWrapper.innerText = $currentDate;
 
-    //////////////////////////////////// data for today other hour weather
+    //////////////////////////////////// data for today other hours weather
     let todayHour = $date.getHours();
     let day = 0;
     if ($date.getDate() < 10) {
@@ -380,6 +381,9 @@ function weatherApi() {
     let $todayDate = `${$date.getFullYear()}-${$date.getMonth() + 1}-${day}`;
 
     let $lists = result.list;
+
+    let hoursArr = [];
+    let tempsArr = [];
     $lists.map((item) => {
       let getTimesDtText = item.dt_txt.slice(11, 13);
       let getFullDate = item.dt_txt.slice(0, 10);
@@ -463,18 +467,45 @@ function weatherApi() {
           getTimesDtText = getTimesDtText + " AM";
         }
 
+        hoursArr.push(getTimesDtText);
+        tempsArr.push(Math.round(item.main.temp));
+
         $daysWrapper.innerHTML += `<div 
-  class="WeatherNow w-[20%] md:w-[70px] h-[146px] bg-[#00000066]/80 border border-[#00000066]/40 shadow-[#FFFFFF40]/25 shadow-2xl rounded-[30px] flex flex-col py-4"
->
-  <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">${getTimesDtText}</h3>
-  <img  class="w-[80%] h-[50px] mx-auto mt-3" src="${$src12}" alt="" />
-  <h5
+          class="WeatherNow w-[20%] md:w-[70px] h-[146px] bg-[#00000066]/80 border border-[#00000066]/40 shadow-[#FFFFFF40]/25 shadow-2xl rounded-[30px] flex flex-col py-4"
+                            >
+          <h3 class="font-semibold text-[15px] text-center text-[#FFFFFF]">${getTimesDtText}</h3>
+          <img  class="w-[80%] h-[50px] mx-auto mt-3" src="${$src12}" alt="" />
+          <h5
     
-    class="font-semibold text-[15px] text-center text-[#FFFFFF] mt-3"
-  >
-  ${$temp12Pm}</h5>
-</div>`;
+          class="font-semibold text-[15px] text-center text-[#FFFFFF] mt-3"
+          >
+          ${$temp12Pm}</h5>
+            </div>`;
       }
+    });
+
+    // add chart for day temp max
+    let weatherCharttoday = null;
+
+    if (weatherCharttoday) weatherCharttoday.destroy();
+    const ctxToday = document.getElementById("todayChart");
+    weatherCharttoday = new Chart(ctxToday, {
+      type: "bar",
+      data: {
+        labels: hoursArr,
+        datasets: [
+          {
+            label: "Max Temp",
+            data: tempsArr,
+            borderWidth: 4,
+            backgroundColor: "rgba(168, 168, 168, 0.774)",
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true } },
+        maintainAspectRatio: false,
+      },
     });
 
     // btn 5day forecast

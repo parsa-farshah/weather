@@ -282,7 +282,7 @@
           <!-- current weather visibility -->
           <div
             id="visibiltiesWrapper"
-            class="w-[90%] md:w-[45%] h-[147px] md:h-[200px] overflow-hidden bg-[#FFFFFF] shadow-black shadow-2xl md:shadow-black/40 mx-auto mt-4 rounded-[20px] flex justify-around items-center duration-500"
+            class="w-[90%] md:w-[45%] h-[147px] md:h-[200px] overflow-hidden bg-[#FFFFFF] shadow-black shadow-sm md:shadow-black/40 mx-auto mt-4 rounded-[20px] flex justify-around items-center duration-500"
           >
             <!-- visibility -->
             <div
@@ -325,7 +325,8 @@
           </div>
           <!-- today other hour weather -->
           <div
-            class="w-[90%] md:w-[50%] h-[300px] backdrop-blur-3xl border border-[#b8b8b8b2] px-3 py-3 rounded-3xl mt-4 mx-auto md:mx-0"
+            id="todayWeather"
+            class="w-[90%] md:w-[50%] h-[400px] backdrop-blur-3xl border border-[#b8b8b8b2] px-3 py-3 rounded-3xl mt-4 mx-auto md:mx-0"
           >
             <h3 class="font-extrabold text-[20px] text-white"></h3>
             <!-- title -->
@@ -364,7 +365,7 @@
           <!-- chart today -->
           <section
             id="todayChartWrapper"
-            class="w-[90%] md:w-[45%] h-[300px] overflow-hidden backdrop-blur-3xl mx-auto mt-4 rounded-[20px] flex justify-around items-center duration-500 border border-[#b8b8b8b2]"
+            class="w-[90%] md:w-[45%] h-[400px] overflow-hidden backdrop-blur-3xl mx-auto mt-4 rounded-[20px] flex justify-around items-center duration-500 border border-[#b8b8b8b2]"
           >
             <div class="w-full h-[300px]">
               <canvas
@@ -505,7 +506,7 @@
           <li>
             <a href="http://github.com/parsa-farshah" target="_blank">
               <img
-                class="w-[45px] h-[45px] hover:scale-125 transition-all duration-500"
+                class="w-[45px] h-[45px] md:w-20 md:h-20 hover:scale-125 transition-all duration-500"
                 src="src/icons/github2.png"
                 alt="GitHub"
               />
@@ -517,7 +518,7 @@
               target="_blank"
             >
               <img
-                class="w-[45px] h-[45px] hover:scale-125 transition-all duration-500"
+                class="w-[45px] h-[45px] md:w-20 md:h-20 hover:scale-125 transition-all duration-500"
                 src="src/icons/instagram.png"
                 alt="Instagram"
               />
@@ -529,7 +530,7 @@
               target="_blank"
             >
               <img
-                class="w-[45px] h-[45px] hover:scale-125 transition-all duration-500"
+                class="w-[45px] h-[45px] md:w-20 md:h-20 hover:scale-125 transition-all duration-500"
                 src="src/icons/linkedin.png"
                 alt="LinkedIn"
               />
@@ -541,7 +542,7 @@
       <!-------------------------------------- navbar ------------------->
       <div
         id="nav"
-        class="w-[90%] md:w-[60%] h-[90px] bg-[#FFFFFF] shadow-black shadow-2xl md:shadow-black/40 mt-4 mx-auto rounded-[100px] mb-10"
+        class="w-[90%] md:w-[60%] h-[90px] bg-[#FFFFFF] shadow-black shadow-sm md:shadow-black/40 mt-4 mx-auto rounded-[100px] mb-10"
       >
         <ul
           id="navUl"

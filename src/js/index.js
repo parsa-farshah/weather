@@ -3,6 +3,8 @@ let $darkBtn = document.getElementById("darkBtn");
 let $btnDarkLight = document.getElementById("btnDarkLight");
 let $btnDarkLightWrapper = document.getElementById("btnDarkLightWrapper");
 let $body = document.querySelector("body");
+let $todayWeather = document.querySelector("#todayWeather");
+let $todayChartWrapper = document.querySelector("#todayChartWrapper");
 
 ////////////////////////////////////////////////////////////// loading
 let $loading = document.querySelector("#loading");
@@ -26,6 +28,12 @@ let $mapDiv = document.querySelector("#mapDiv");
 
 ///////////////////////////////////////////////////// dark light theme
 $btnDarkLight.addEventListener("click", () => {
+  $todayWeather.classList.toggle("border-[#b8b8b8b2]");
+  $todayWeather.classList.toggle("border-[#333333b2]");
+
+  $todayChartWrapper.classList.toggle("border-[#b8b8b8b2]");
+  $todayChartWrapper.classList.toggle("border-[#333333b2]");
+
   $btnDarkLightWrapper.classList.toggle("bg-[#ececec]");
   $btnDarkLightWrapper.classList.toggle("bg-[#222222f6]");
 
@@ -1345,7 +1353,6 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
 
     let lastMarker = null;
 
-    // هم روی دسکتاپ و هم موبایل کار می‌کند
     map.on("click", function (e) {
       const lat = e.latlng.lat;
       const lon = e.latlng.lng;
@@ -1355,12 +1362,10 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
         initialMarker = null;
       }
 
-      // پاک کردن مارکر قبلی (اختیاری)
       if (lastMarker) {
         map.removeLayer(lastMarker);
       }
 
-      // ایجاد مارکر جدید روی محل کلیک
       lastMarker = L.marker([lat, lon]).addTo(map);
 
       fetch(
@@ -1374,13 +1379,45 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
             data.address.village ||
             "Unknown";
 
-          nameCitySearch = city;
           // resting
+          if (weatherChart) weatherChart.destroy();
+          if (weatherChartMin) weatherChartMin.destroy();
+          if (weatherCharttoday) weatherCharttoday.destroy();
+
+          /////////////////////////// reseting
           $forecat5day.innerHTML = "";
           $daysWrapper.innerHTML = "";
-          weatherApi();
-          unsplashApi();
-          mapApi();
+          //////////////////////////// reset when add new city
+          $city.innerText = "";
+          $country.innerText = "";
+          ///////////////////////////// input value enter to api url
+
+          //////////////////////////// cant enter the number or script
+
+          if (
+            city == ""
+          ) {
+            $errorSearch.classList.remove("hidden");
+            $errorSearch.classList.add("flex");
+            setTimeout(() => {
+              $errorSearch.classList.remove("flex");
+              $errorSearch.classList.add("hidden");
+            }, 3000);
+            weatherApi();
+            nameCitySearch = "tehran";
+            weatherApi();
+            unsplashApi();
+            mapApi();
+            $search.value = "";
+            $search.focus();
+          } else {
+            nameCitySearch = city;
+            weatherApi();
+            unsplashApi();
+            mapApi();
+            $search.value = "";
+            $search.focus();
+          }
         });
     });
   });

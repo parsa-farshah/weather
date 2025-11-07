@@ -160,6 +160,7 @@ let $forecat5day = document.querySelector("#forecat5day");
 
 let $myChart = document.querySelector("myChart");
 let weatherChart = null;
+let weatherChartMin = null;
 
 ///////////////////////////////////////////////////// search button click
 $searchBtn.addEventListener("click", () => {
@@ -200,12 +201,23 @@ let $arrL4day = document.querySelector("#arrL4day");
 
 // chart value
 let $todayMaxTemp = 0;
-let $tomorrowMaxTemp = 0;
 
 function weatherApi() {
   asynAwait(
     `https://api.openweathermap.org/data/2.5/forecast?appid=14da3e989046810485f4fe023957b34b&q=${nameCitySearch}&units=metric`
   ).then((result) => {
+    let $tomorrowMaxTempDate = "";
+    let $day3MaxTempDate = "";
+    let $day4MaxTempDate = "";
+    let $day5MaxTempDate = "";
+
+    let $tomorrowMaxTemp = 0;
+    let $day3MaxTemp = 0;
+    let $day4MaxTemp = 0;
+    let $day5MaxTemp = 0;
+
+    let $todayMaxTemp = Math.round(result.list[0].main.temp_max);
+    let $todayMinTemp = Math.round(result.list[0].main.temp_min);
     // error city is not found
     if (result == undefined) {
       $errorCity.classList.remove("hidden");
@@ -254,7 +266,8 @@ function weatherApi() {
     let $tempMin = Math.round(result.list[0].main.temp_min) + "°";
     let $tempMax = Math.round(result.list[0].main.temp_max) + "°";
 
-    $todayMaxTemp = Math.round(result.list[0].main.temp_min);
+    $todayMaxTemp = Math.round(result.list[0].main.temp_max);
+    $todayMinTemp = Math.round(result.list[0].main.temp_min);
 
     let $tempMaxMinVal = ` ${$tempMax}/${$tempMin}`;
     $tempMaxMin.innerText = $tempMaxMinVal;
@@ -526,14 +539,14 @@ function weatherApi() {
       let $tommorowDateTxt = `${$date.getFullYear()}/${
         $date.getMonth() + 1
       }/${$dayTommorow}`;
-
+      getFullDateTommorow = $tommorowDateTxt;
       if (getFullDate == $tommorowDate) {
         tempMaxArr.push(item.main.temp_max);
         tempMinArr.push(item.main.temp_min);
 
         // tempMaxTommorow = Math.round(item.main.temp_max) + "°";
         // tempminTommorow = Math.round(item.main.temp_min) + "°";
-        getFullDateTommorow = $tommorowDateTxt;
+
         tommorowTxt = "Tomorrow";
         tommorowCurrent = item.weather[0].description;
         tommorowIcon = item.weather[0].icon;
@@ -624,9 +637,6 @@ function weatherApi() {
         </div>
         <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrent}</h5>
         </div>`;
-
-    let $tomorrowMaxTempDate = getFullDateTommorow;
-
     //////////////////////////////////////// end tomorrow
 
     //////////////////////////////////// Day after tomorrow
@@ -900,8 +910,8 @@ function weatherApi() {
         <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentIn3}</h5>
         </div>`;
 
-    let $day3MaxTempDate = getFullDateTommorowA;
-    let $day3MaxTemp = Math.round(Math.max(...tempMaxArrA));
+    $day3MaxTempDate = getFullDateTommorowA;
+    $day3MaxTemp = Math.round(Math.max(...tempMaxArrA));
 
     // end in 3 days
 
@@ -940,9 +950,6 @@ function weatherApi() {
       let $tommorowDateTxtIn4 = `${$date.getFullYear()}/${
         $date.getMonth() + 1
       }/${$dayTommorowIn4}`;
-
-      console.log($tommorowDateTxtIn4);
-      console.log($tommorowDateIn4);
 
       if (getFullDateIn4 == $tommorowDateIn4) {
         tempMaxArrIn4.push(item.main.temp_max);
@@ -1038,24 +1045,24 @@ function weatherApi() {
         <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentIn4}</h5>
         </div>`;
 
-    let $day4MaxTempDate = getFullDateTommorowIn3;
-    let $day4MaxTemp = Math.round(Math.max(...tempMaxArrIn3));
+    $day4MaxTempDate = getFullDateTommorowIn3;
+    $day4MaxTemp = Math.round(Math.max(...tempMaxArrIn3));
 
-    let $day5MaxTempDate = getFullDateTommorowIn4;
-    let $day5MaxTemp = Math.round(Math.max(...tempMaxArrIn4));
+    $day5MaxTempDate = getFullDateTommorowIn4;
+    $day5MaxTemp = Math.round(Math.max(...tempMaxArrIn4));
     // end in 4 days
 
+    $tomorrowMaxTempDate = getFullDateTommorow;
     // chartttttttttttttttttttttttttt
 
-    //////////////////////////////////////// add chart
-    if (weatherChart) {
-      weatherChart.destroy();
-    }
+    $tomorrowMaxTempDate = $tomorrowMaxTempDate || $currentDate;
+    $day3MaxTempDate = $day3MaxTempDate || $currentDate;
+    $day4MaxTempDate = $day4MaxTempDate || $currentDate;
+    $day5MaxTempDate = $day5MaxTempDate || $currentDate;
 
-    $tomorrowMaxTemp = Math.round(Math.max(...tempMaxArrIn4));
-
+    // حالا چارت‌ها
+    if (weatherChart) weatherChart.destroy();
     const ctx = document.getElementById("myChart");
-
     weatherChart = new Chart(ctx, {
       type: "bar",
       data: {
@@ -1077,18 +1084,62 @@ function weatherApi() {
               $day5MaxTemp,
             ],
             borderWidth: 1,
+            backgroundColor: "rgba(255, 24, 24, 0.425)",
           },
         ],
       },
       options: {
-        scales: {
-          y: {
-            beginAtZero: true,
+        scales: { y: { beginAtZero: true } },
+        maintainAspectRatio: false,
+      },
+    });
+
+    if (weatherChartMin) weatherChartMin.destroy();
+    const ctxMin = document.getElementById("tempMin");
+    weatherChartMin = new Chart(ctxMin, {
+      type: "line",
+      data: {
+        labels: [
+          `Today`,
+          `${$tomorrowMaxTempDate}`,
+          `${$day3MaxTempDate}`,
+          `${$day4MaxTempDate}`,
+          `${$day5MaxTempDate}`,
+        ],
+        datasets: [
+          {
+            label: "Min Temp",
+            data: [
+              $todayMinTemp,
+              tempMinArr.length
+                ? Math.round(Math.min(...tempMinArr))
+                : $todayMinTemp,
+              tempMinArrA.length
+                ? Math.round(Math.min(...tempMinArrA))
+                : $todayMinTemp,
+              tempMinArrIn3.length
+                ? Math.round(Math.min(...tempMinArrIn3))
+                : $todayMinTemp,
+              tempMinArrIn4.length
+                ? Math.round(Math.min(...tempMinArrIn4))
+                : $todayMinTemp,
+            ],
+            borderColor: "rgba(54, 162, 235, 0.5)",
+            borderWidth: 4,
+            backgroundColor: "#0000",
           },
-        },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true } },
+        maintainAspectRatio: false,
       },
     });
   });
+
+  // min temp chart
+
+  // min temp chart
 }
 weatherApi();
 
@@ -1184,7 +1235,6 @@ let $unsplashImg3 = document.querySelector("#unsplashImg3");
 let $unsplashImg4 = document.querySelector("#unsplashImg4");
 let $unsplashImg5 = document.querySelector("#unsplashImg5");
 let $unsplashImg6 = document.querySelector("#unsplashImg6");
-console.log($unsplashImg6);
 
 function unsplashApi() {
   $loading.classList.remove("hidden");
@@ -1198,7 +1248,6 @@ function unsplashApi() {
     let $srcUnsplash4 = val.results[4].urls.regular;
     let $srcUnsplash5 = val.results[5].urls.regular;
     let $srcUnsplash6 = val.results[6].urls.regular;
-    console.log($srcUnsplash6);
 
     $unsplashImg.setAttribute("src", `${$srcUnsplash}`);
     $unsplashImg2.setAttribute("src", `${$srcUnsplash2}`);

@@ -460,8 +460,12 @@
 
       <!-------------------------------------- chart page -------------------->
       <section id="chartPage" class="hidden mt-4">
-        <div class="w-[80%] md:w-[50%] mx-auto">
-          <canvas id="myChart"></canvas>
+        <div class="w-[80%] md:w-[50%] h-[300px] md:h-auto mx-auto">
+          <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
+        </div>
+
+        <div class="w-[80%] md:w-[50%] h-[300px] md:h-auto mx-auto mt-10">
+          <canvas id="tempMin" style="width: 100%; height: 100%"></canvas>
         </div>
       </section>
 
@@ -525,7 +529,8 @@
           </li>
           <!-- chart -->
           <li>
-            <div id="chartBtn"
+            <div
+              id="chartBtn"
               class="w-full h-full flex justify-center items-center group cursor-pointer"
             >
               <svg

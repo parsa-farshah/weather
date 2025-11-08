@@ -43,28 +43,28 @@ Using multiple powerful APIs and an interactive UI, you can easily check tempera
 
 ---
 
-🖼️ Project Screenshots 🌟 Overview
+# 🖼️ Project Screenshots 🌟 Overview
 <img src="src/images/cover white.png" alt="Fresh Swiper Overview" width="100%" />
 
-🖼️ Project Screenshots 🌟 Overview
+# 🖼️ Project Screenshots 🌟 Overview
 <img src="src/images/cover.png" alt="Fresh Swiper Overview" width="100%" />
 
-💻 Desktop View
+## 💻 Desktop View
 <img src="src/images/1.png" alt="Fresh Swiper Desktop View"  width="100%" />
 
-💻 Desktop View
+## 💻 Desktop View
 <img src="src/images/1.png" alt="Fresh Swiper Desktop View"  width="100%" />
-💻 Desktop View
+## 💻 Desktop View
 <img src="src/images/2.png" alt="Fresh Swiper Desktop View" width="100%" />
-💻 Desktop View
+## 💻 Desktop View
 <img src="src/images/3.png" alt="Fresh Swiper Desktop View"  width="100%" />
-💻 Desktop View
+## 💻 Desktop View
 <img src="src/images/4.png" alt="Fresh Swiper Desktop View"  width="100%" />
-💻 Desktop View
+##💻 Desktop View
 <img src="src/images/5.png" alt="Fresh Swiper Desktop View"  width="100%" />
-💻 Desktop View
+## 💻 Desktop View
 <img src="src/images/6.png" alt="Fresh Swiper Desktop View"  width="100%" />
-💻 Desktop View
+## 💻 Desktop View
 <img src="src/images/8.png" alt="Fresh Swiper Desktop View"  width="100%" />
 
 ### 📱 Mobile View

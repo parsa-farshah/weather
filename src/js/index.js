@@ -464,6 +464,15 @@ function weatherApi() {
 
     if (weatherCharttoday) weatherCharttoday.destroy();
     const ctxToday = document.getElementById("todayChart");
+    const colors = [
+      "rgba(255, 99, 132, 0.7)",
+      "rgba(54, 162, 235, 0.7)",
+      "rgba(255, 206, 86, 0.7)",
+      "rgba(75, 192, 192, 0.7)",
+      "rgba(153, 102, 255, 0.7)",
+      "rgba(255, 159, 64, 0.7)",
+      "rgba(201, 203, 207, 0.7)",
+    ];
     weatherCharttoday = new Chart(ctxToday, {
       type: "bar",
       data: {
@@ -473,7 +482,7 @@ function weatherApi() {
             label: "Max Temp",
             data: tempsArr,
             borderWidth: 4,
-            backgroundColor: "rgba(168, 168, 168, 0.774)",
+            backgroundColor: colors,
           },
         ],
       },
@@ -1190,7 +1199,7 @@ $prof.addEventListener("click", () => {
   $chartPage.classList.add("hidden");
 });
 
-// chart click
+///////////////////////////////////////////////////// chart click
 $chartBtn.addEventListener("click", () => {
   $forecat5day.classList.add("hidden");
 
@@ -1334,6 +1343,7 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
     let $lon = val[0].lon;
     let mapDiv = document.createElement("div");
     mapDiv.id = "map";
+    mapDiv.classList.add("rounded-4xl");
     mapDiv.style.width = "100%";
     mapDiv.style.height = "500px";
     container.appendChild(mapDiv);
@@ -1394,9 +1404,7 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
 
           //////////////////////////// cant enter the number or script
 
-          if (
-            city == ""
-          ) {
+          if (city == "") {
             $errorSearch.classList.remove("hidden");
             $errorSearch.classList.add("flex");
             setTimeout(() => {
@@ -1486,6 +1494,3 @@ $searchBtn.addEventListener("click", () => {
     $search.focus();
   }
 });
-// https://api.weatherstack.com/current?access_key=7340fb13f2c32d5ab02d364f916ab6a2&query=tehran
-
-// https://api.openweathermap.org/data/2.5/forecast?q=tehran&units=metric&appid=14da3e989046810485f4fe023957b34b

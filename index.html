@@ -19,27 +19,6 @@
       href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
     />
     <style>
-      /* .swiper {
-        width: 100%;
-        height: 100%;
-      }  */
-
-      /* .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #444;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      } */
-
-      /* .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }  */
-
       .autoplay-progress {
         position: absolute;
         right: 16px;
@@ -51,7 +30,9 @@
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        color: var(--swiper-theme-color);
+        color: black;
+        background-color: aliceblue;
+        border-radius: 50%;
       }
 
       .autoplay-progress svg {
@@ -63,11 +44,23 @@
         width: 100%;
         height: 100%;
         stroke-width: 4px;
-        stroke: var(--swiper-theme-color);
+        stroke: black;
         fill: none;
         stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
         stroke-dasharray: 125.6;
         transform: rotate(-90deg);
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: black;
+        background-color: rgba(128, 128, 128, 0.767);
+        border-radius: 50%;
+      }
+      .swiper-button-next svg,
+      .swiper-button-prev svg {
+        width: 70%;
+        height: 70%;
       }
     </style>
   </head>
@@ -384,11 +377,11 @@
       <!-------------------------------------- map page ----------------------->
       <div
         id="mapDiv"
-        class="w-full px-[10%] mx-auto bg-[url(../images/bgMap.png)] bg-contain bg-no-repeat hidden mt-6 gap-4 flex-wrap justify-center"
+        class="w-full px-[3%] mx-auto bg-[url(../images/bgMap.png)] bg-contain bg-no-repeat hidden mt-6 gap-4 flex-wrap justify-center"
       >
         <!-- slider -->
         <div
-          class="w-[90%] md:w-[45%] h-[500px] overflow-hidden border border-[#ffffff8a] rounded-4xl"
+          class="w-[90%] md:w-[48%] h-[500px] overflow-hidden bg-[#6b6b6b2f] border border-[#8b8b8b8a] p-2 rounded-4xl"
         >
           <div class="swiper mySwiper rounded-4xl w-full h-full">
             <div class="swiper-wrapper w-full h-full">
@@ -467,7 +460,7 @@
 
         <!-- map container -->
         <div
-          class="w-[90%] md:w-[45%] h-[500px] border border-[#ffffff8a] rounded-4xl relative z-20 overflow-hidden"
+          class="w-[90%] md:w-[48%] h-[500px] bg-[#6b6b6b2f] border border-[#8b8b8b8a] p-2 rounded-4xl relative z-20 overflow-hidden"
           id="mapContainer"
         ></div>
       </div>
@@ -542,7 +535,7 @@
       <!-------------------------------------- navbar ------------------->
       <div
         id="nav"
-        class="w-[90%] md:w-[60%] h-[90px] bg-[#FFFFFF] shadow-black shadow-sm md:shadow-black/40 mt-4 mx-auto rounded-[100px] mb-10"
+        class="w-[90%] md:w-[35%] h-[90px] bg-[#FFFFFF] shadow-black shadow-sm md:shadow-black/40 mt-4 mx-auto rounded-[100px] mb-10"
       >
         <ul
           id="navUl"
@@ -560,7 +553,7 @@
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="#000000"
-                class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
+                class="w-[40%] h-[40%] group-hover:scale-110 duration-300"
               >
                 <path
                   strokeLinecap="round"
@@ -582,7 +575,7 @@
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="#000000"
-                class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
+                class="w-[40%] h-[40%] group-hover:scale-110 duration-300"
               >
                 <path
                   stroke-linecap="round"
@@ -609,7 +602,7 @@
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="#000000"
-                class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] group-hover:scale-110 duration-300"
+                class="w-[40%] h-[40%] group-hover:scale-110 duration-300"
               >
                 <path
                   stroke-linecap="round"

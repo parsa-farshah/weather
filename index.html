@@ -63,10 +63,9 @@
         height: 70%;
       }
       .swiper-pagination-bullet {
-        background: #ebebeb; 
-        opacity: 0.6; 
+        background: #ebebeb;
+        opacity: 0.6;
       }
-
 
       .swiper-pagination-bullet-active {
         background: #0099ff;
@@ -198,7 +197,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="black"
-            class="absolute left-0 -translate-y-1/2 top-1/2 w-5 h-5 hidden cursor-pointer duration-500 hover:scale-125"
+            class="absolute -left-8 md:left-0 -translate-y-1/2 top-1/2 w-5 h-5 hidden cursor-pointer duration-500 hover:scale-125"
           >
             <path
               stroke-linecap="round"
@@ -241,7 +240,7 @@
         >
           <!------------------ current weather --------------------->
           <div
-            class="w-[90%] md:w-[50%] relative h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto md:mx-0 mt-24 md:mt-4 px-[5%] flex justify-between duration-700"
+            class="w-[90%] md:w-[50%] relative h-[250px]  bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto md:mx-0 mt-24 md:mt-4 px-[5%] flex justify-between duration-700"
           >
             <!-- left side -->
             <div class="w-1/2 h-full pt-[110px]">
@@ -285,7 +284,7 @@
           <!-- current weather visibility -->
           <div
             id="visibiltiesWrapper"
-            class="w-[90%] md:w-[45%] h-[147px] md:h-[200px] overflow-hidden bg-[#FFFFFF] shadow-black shadow-sm md:shadow-black/40 mx-auto mt-4 rounded-[20px] flex justify-around items-center duration-500"
+            class="w-[90%] md:w-[45%] h-[147px] md:h-[250px] overflow-hidden bg-[#FFFFFF] shadow-black shadow-sm md:shadow-black/40 mx-auto mt-4 rounded-[20px] flex justify-around items-center duration-500"
           >
             <!-- visibility -->
             <div
@@ -329,7 +328,7 @@
           <!-- today other hour weather -->
           <div
             id="todayWeather"
-            class="w-[90%] md:w-[50%] h-[400px] backdrop-blur-3xl border border-[#b8b8b8b2] px-3 py-3 rounded-3xl mt-4 mx-auto md:mx-0"
+            class="w-[90%] md:w-[50%] h-auto md:h-[400px] backdrop-blur-3xl border border-[#7a7a7ae1] px-3 py-3 rounded-3xl mt-4 mx-auto md:mx-0"
           >
             <h3 class="font-extrabold text-[20px] text-white"></h3>
             <!-- title -->
@@ -470,7 +469,7 @@
 
         <!-- map container -->
         <div
-          class="w-[90%] md:w-[48%] h-[500px] bg-[#6b6b6b2f] border border-[#8b8b8b8a] p-2 rounded-4xl relative z-20 overflow-hidden"
+          class="w-[90%] md:w-[48%] h-[500px] bg-[#6b6b6b2f] border border-[#8b8b8b8a] p-2 rounded-4xl relative z-20 overflow-hidden flex justify-center items-center"
           id="mapContainer"
         ></div>
       </div>

@@ -67,7 +67,8 @@ Using multiple powerful APIs and an interactive UI, you can easily check tempera
 💻 Desktop View
 <img src="src/images/8.png" alt="Fresh Swiper Desktop View"  width="100%" />
 
-📱 Mobile View
+### 📱 Mobile View
+
 <img src="src/images/9.png" alt="Fresh Swiper Mobile View" width="60%" />
 <img src="src/images/10.png" alt="Fresh Swiper Mobile View" width="60%" />
 <img src="src/images/11.png" alt="Fresh Swiper Mobile View" width="60%" />

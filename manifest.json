@@ -1,0 +1,22 @@
+{
+  "name": "fresh-weather",
+  "short_name": "weather",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fffa",
+  "theme_color": "#fff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "src/images/Fresh Weather 512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "src/images/fresh weather 144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

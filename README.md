@@ -44,33 +44,33 @@ Using multiple powerful APIs and an interactive UI, you can easily check tempera
 ---
 
 🖼️ Project Screenshots 🌟 Overview
-<img src="docs/images/cover white.png" alt="Fresh Swiper Overview" width="100%" />
+<img src="src/images/cover white.png" alt="Fresh Swiper Overview" width="100%" />
 
 🖼️ Project Screenshots 🌟 Overview
-<img src="docs/images/cover.png" alt="Fresh Swiper Overview" width="100%" />
+<img src="src/images/cover.png" alt="Fresh Swiper Overview" width="100%" />
 
 💻 Desktop View
-<img src="docs/images/1.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/1.png" alt="Fresh Swiper Desktop View" width="48%" />
 
 💻 Desktop View
-<img src="docs/images/1.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/1.png" alt="Fresh Swiper Desktop View" width="48%" />
 💻 Desktop View
-<img src="docs/images/2.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/2.png" alt="Fresh Swiper Desktop View" width="48%" />
 💻 Desktop View
-<img src="docs/images/3.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/3.png" alt="Fresh Swiper Desktop View" width="48%" />
 💻 Desktop View
-<img src="docs/images/4.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/4.png" alt="Fresh Swiper Desktop View" width="48%" />
 💻 Desktop View
-<img src="docs/images/5.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/5.png" alt="Fresh Swiper Desktop View" width="48%" />
 💻 Desktop View
-<img src="docs/images/6.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/6.png" alt="Fresh Swiper Desktop View" width="48%" />
 💻 Desktop View
-<img src="docs/images/8.png" alt="Fresh Swiper Desktop View" width="48%" />
+<img src="src/images/8.png" alt="Fresh Swiper Desktop View" width="48%" />
 
 📱 Mobile View
-<img src="docs/images/9.png" alt="Fresh Swiper Mobile View" width="60%" />
-<img src="docs/images/10.png" alt="Fresh Swiper Mobile View" width="60%" />
-<img src="docs/images/11.png" alt="Fresh Swiper Mobile View" width="60%" />
+<img src="src/images/9.png" alt="Fresh Swiper Mobile View" width="60%" />
+<img src="src/images/10.png" alt="Fresh Swiper Mobile View" width="60%" />
+<img src="src/images/11.png" alt="Fresh Swiper Mobile View" width="60%" />
 
 👨‍💻 Developed By [parsa dehghan pour
 farashah](http://linkedin.com/in/parsa-dehghan-pour-farashah-85ab04250)

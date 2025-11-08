@@ -391,6 +391,9 @@
   .w-32 {
     width: calc(var(--spacing) * 32);
   }
+  .w-\[0\%\] {
+    width: 0%;
+  }
   .w-\[15px\] {
     width: 15px;
   }

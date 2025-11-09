@@ -25,14 +25,23 @@ let $updatingDot = document.querySelector("#updatingDot");
 
 ///////////////////////////////////////////////////// map div
 let $mapDiv = document.querySelector("#mapDiv");
+let $bgWhite = document.querySelector("#bgWhite");
+let $bgDark = document.querySelector("#bgDark");
+let $currentWeather = document.querySelector("#currentWeather");
+
+let $theme = "#000";
 
 ///////////////////////////////////////////////////// dark light theme
 $btnDarkLight.addEventListener("click", () => {
-  $todayWeather.classList.toggle("border-[#b8b8b8b2]");
-  $todayWeather.classList.toggle("border-[#333333b2]");
+  // $todayWeather.classList.toggle("border-[#b8b8b8b2]");
+  // $todayWeather.classList.toggle("border-[#333333b2]");
 
-  $todayChartWrapper.classList.toggle("border-[#b8b8b8b2]");
-  $todayChartWrapper.classList.toggle("border-[#333333b2]");
+  $currentWeather.classList.toggle("text-white");
+
+  // $todayChartWrapper.classList.toggle("border-[#b8b8b8b2]");
+  // $todayChartWrapper.classList.toggle("border-[#333333b2]");
+  $bgWhite.classList.toggle("hidden");
+  $bgDark.classList.toggle("hidden");
 
   $btnDarkLightWrapper.classList.toggle("bg-[#ececec]");
   $btnDarkLightWrapper.classList.toggle("bg-[#222222f6]");
@@ -70,12 +79,12 @@ $btnDarkLight.addEventListener("click", () => {
 
   // visibilty section
   let $visibiltiesWrapper = document.querySelector("#visibiltiesWrapper");
-  $visibiltiesWrapper.classList.toggle("bg-[#FFFFFF]");
+  // $visibiltiesWrapper.classList.toggle("bg-[#FFFFFF]");
   $visibiltiesWrapper.classList.toggle("shadow-black");
   $visibiltiesWrapper.classList.toggle("md:shadow-black/40");
   $visibiltiesWrapper.classList.toggle("shadow-white/15");
   $visibiltiesWrapper.classList.toggle("md:shadow-[#FFFEFE]/10");
-  $visibiltiesWrapper.classList.toggle("bg-[#FFFEFE]/6");
+  // $visibiltiesWrapper.classList.toggle("bg-[#FFFEFE]/6");
 
   // WeatherNow hours
 
@@ -111,10 +120,10 @@ $btnDarkLight.addEventListener("click", () => {
   let $navUl = document.querySelector("#navUl");
   let $navLi = document.querySelectorAll("#navUl>li>a>svg");
 
-  $nav.classList.toggle("bg-[#FFFFFF]");
+  // $nav.classList.toggle("bg-[#FFFFFF]");
   $nav.classList.toggle("shadow-black");
   $nav.classList.toggle("md:shadow-black/40");
-  $nav.classList.toggle("bg-[#FFFEFE]/6");
+  // $nav.classList.toggle("bg-[#FFFEFE]/6");
   $nav.classList.toggle("shadow-white/20");
   $nav.classList.toggle("md:shadow-white/15");
 
@@ -128,9 +137,13 @@ $btnDarkLight.addEventListener("click", () => {
 
     if ($color == "#000000") {
       val.setAttribute("stroke", "#ffff");
+      $theme = "#ffff";
+      weatherChartMin.upadate();
     }
     if ($color == "#ffff") {
       val.setAttribute("stroke", "#000000");
+      $theme = "#ffff";
+      weatherChartMin.upadate();
     }
   });
 
@@ -465,13 +478,22 @@ function weatherApi() {
     if (weatherCharttoday) weatherCharttoday.destroy();
     const ctxToday = document.getElementById("todayChart");
     const colors = [
-      "rgba(255, 99, 132, 0.7)",
-      "rgba(54, 162, 235, 0.7)",
-      "rgba(255, 206, 86, 0.7)",
-      "rgba(75, 192, 192, 0.7)",
-      "rgba(153, 102, 255, 0.7)",
-      "rgba(255, 159, 64, 0.7)",
-      "rgba(201, 203, 207, 0.7)",
+      "rgb(3, 201, 201)",
+      "rgb(138, 3, 201)",
+      "rgb(201, 3, 135)",
+      "rgb(201, 3, 62)",
+      "rgb(0, 187, 115)",
+      "rgb(0, 187, 31)",
+      "rgb(166, 255, 50)",
+      "rgb(255, 252, 52)",
+      "rgb(255, 133, 52)",
+      "rgb(255, 52, 52)",
+      "rgb(15, 57, 85)",
+      "rgb(83, 15, 85)",
+      "rgb(201, 3, 135)",
+      "rgb(201, 3, 62)",
+      "rgb(0, 187, 115)",
+      "rgb(0, 187, 31)",
     ];
     weatherCharttoday = new Chart(ctxToday, {
       type: "bar",
@@ -489,6 +511,35 @@ function weatherApi() {
       options: {
         scales: { y: { beginAtZero: true } },
         maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: {
+              color: "#000",
+            },
+            grid: {
+              color: "#000",
+            },
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: "#000",
+            },
+            grid: {
+              color: "#000",
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: "#000",
+            },
+          },
+          title: {
+            color: "#000f",
+          },
+        },
       },
     });
 
@@ -646,7 +697,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrow}"/>
           <div class="pt-3 md:pt-11">
@@ -782,7 +833,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowA}"/>
           <div class="pt-3 md:pt-11">
@@ -918,7 +969,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn3}"/>
           <div class="pt-3 md:pt-11">
@@ -1053,7 +1104,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full border border-[#3d3d3d] relative md:h-[200px] bg-gradient-to-r from-[#7B7883] rounded-[29px] to-black mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn4}"/>
           <div class="pt-3 md:pt-11">
@@ -1104,13 +1155,43 @@ function weatherApi() {
               $day5MaxTemp,
             ],
             borderWidth: 1,
-            backgroundColor: "rgba(255, 24, 24, 0.425)",
+            backgroundColor: "rgb(255, 71, 71)",
+            color: "white",
           },
         ],
       },
       options: {
         scales: { y: { beginAtZero: true } },
         maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: {
+              color: "#000",
+            },
+            grid: {
+              color: "#000",
+            },
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: "#000",
+            },
+            grid: {
+              color: "#000",
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: "#000",
+            },
+          },
+          title: {
+            color: "#000f",
+          },
+        },
       },
     });
 
@@ -1144,7 +1225,7 @@ function weatherApi() {
                 ? Math.round(Math.min(...tempMinArrIn4))
                 : $todayMinTemp,
             ],
-            borderColor: "rgba(54, 162, 235, 0.5)",
+            borderColor: "rgb(47, 130, 255)",
             borderWidth: 4,
             backgroundColor: "#0000",
           },
@@ -1153,8 +1234,77 @@ function weatherApi() {
       options: {
         scales: { y: { beginAtZero: true } },
         maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: {
+              color: $theme,
+            },
+            grid: {
+              color: $theme,
+            },
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: $theme,
+            },
+            grid: {
+              color: $theme,
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: $theme,
+            },
+          },
+          title: {
+            color: $theme,
+          },
+        },
       },
     });
+  });
+  $btnDarkLight.addEventListener("click", () => {
+    let isDark = $body.classList.contains("bg-black");
+
+    weatherChartMin.options.scales.x.ticks.color = isDark ? "#fff" : "#000";
+    weatherChartMin.options.scales.y.ticks.color = isDark ? "#fff" : "#000";
+    weatherChartMin.options.scales.x.grid.color = isDark
+      ? "rgba(255,255,255,0.2)"
+      : "#000";
+    weatherChartMin.options.scales.y.grid.color = isDark
+      ? "rgba(255,255,255,0.2)"
+      : "#000";
+    weatherChartMin.options.plugins.legend.labels.color = isDark
+      ? "#fff"
+      : "#000";
+    weatherChartMin.update();
+
+    weatherChart.options.scales.x.ticks.color = isDark ? "#fff" : "#000";
+    weatherChart.options.scales.y.ticks.color = isDark ? "#fff" : "#000";
+    weatherChart.options.scales.x.grid.color = isDark
+      ? "rgba(255,255,255,0.2)"
+      : "#000";
+    weatherChart.options.scales.y.grid.color = isDark
+      ? "rgba(255,255,255,0.2)"
+      : "#000";
+    weatherChart.options.plugins.legend.labels.color = isDark ? "#fff" : "#000";
+    weatherChart.update();
+
+    weatherCharttoday.options.scales.x.ticks.color = isDark ? "#fff" : "#000";
+    weatherCharttoday.options.scales.y.ticks.color = isDark ? "#fff" : "#000";
+    weatherCharttoday.options.scales.x.grid.color = isDark
+      ? "rgba(255,255,255,0.2)"
+      : "#000";
+    weatherCharttoday.options.scales.y.grid.color = isDark
+      ? "rgba(255,255,255,0.2)"
+      : "#000";
+    weatherCharttoday.options.plugins.legend.labels.color = isDark
+      ? "#fff"
+      : "#000";
+    weatherCharttoday.update();
   });
 }
 weatherApi();
@@ -1346,7 +1496,7 @@ https://nominatim.openstreetmap.org/search?format=json&q=${nameCitySearch}&limit
     mapDiv.classList.add("rounded-4xl");
     mapDiv.style.width = "80%";
     mapDiv.style.height = "300px";
-    mapDiv.style.border = "1px solid #7a7a7ae1"
+    mapDiv.style.border = "1px solid #7a7a7ae1";
     container.appendChild(mapDiv);
 
     const map = L.map("map", { tap: false }).setView([$lat, $lon], 11);

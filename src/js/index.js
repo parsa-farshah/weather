@@ -477,24 +477,24 @@ function weatherApi() {
 
     if (weatherCharttoday) weatherCharttoday.destroy();
     const ctxToday = document.getElementById("todayChart");
-    const colors = [
-      "rgb(3, 201, 201)",
-      "rgb(138, 3, 201)",
-      "rgb(201, 3, 135)",
-      "rgb(201, 3, 62)",
-      "rgb(0, 187, 115)",
-      "rgb(0, 187, 31)",
-      "rgb(166, 255, 50)",
-      "rgb(255, 252, 52)",
-      "rgb(255, 133, 52)",
-      "rgb(255, 52, 52)",
-      "rgb(15, 57, 85)",
-      "rgb(83, 15, 85)",
-      "rgb(201, 3, 135)",
-      "rgb(201, 3, 62)",
-      "rgb(0, 187, 115)",
-      "rgb(0, 187, 31)",
-    ];
+    // const colors = [
+    //   "rgb(3, 201, 201)",
+    //   "rgb(138, 3, 201)",
+    //   "rgb(201, 3, 135)",
+    //   "rgb(201, 3, 62)",
+    //   "rgb(0, 187, 115)",
+    //   "rgb(0, 187, 31)",
+    //   "rgb(166, 255, 50)",
+    //   "rgb(255, 252, 52)",
+    //   "rgb(255, 133, 52)",
+    //   "rgb(255, 52, 52)",
+    //   "rgb(15, 57, 85)",
+    //   "rgb(83, 15, 85)",
+    //   "rgb(201, 3, 135)",
+    //   "rgb(201, 3, 62)",
+    //   "rgb(0, 187, 115)",
+    //   "rgb(0, 187, 31)",
+    // ];
     weatherCharttoday = new Chart(ctxToday, {
       type: "bar",
       data: {
@@ -504,7 +504,7 @@ function weatherApi() {
             label: "Max Temp",
             data: tempsArr,
             borderWidth: 4,
-            backgroundColor: colors,
+            backgroundColor: "rgb(3, 201, 201)",
           },
         ],
       },
@@ -697,7 +697,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full  backdrop-blur-xl bg-[#ffffff57] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-sm bg-[#ffffff23] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrow}"/>
           <div class="pt-3 md:pt-11">
@@ -833,7 +833,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full  backdrop-blur-xl bg-[#ffffff57] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-sm bg-[#ffffff23] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowA}"/>
           <div class="pt-3 md:pt-11">
@@ -969,7 +969,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full  backdrop-blur-xl bg-[#ffffff57] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-sm bg-[#ffffff23] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn3}"/>
           <div class="pt-3 md:pt-11">
@@ -1104,7 +1104,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full backdrop-blur-xl bg-[#ffffff57] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full backdrop-blur-sm bg-[#ffffff23] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn4}"/>
           <div class="pt-3 md:pt-11">

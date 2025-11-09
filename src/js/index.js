@@ -697,7 +697,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full  backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-3xl  bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrow}"/>
           <div class="pt-3 md:pt-11">
@@ -833,7 +833,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full  backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-3xl  bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowA}"/>
           <div class="pt-3 md:pt-11">
@@ -969,7 +969,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full  backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full  backdrop-blur-3xl  bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn3}"/>
           <div class="pt-3 md:pt-11">
@@ -1104,7 +1104,7 @@ function weatherApi() {
     });
 
     $forecat5day.innerHTML += `
-        <div class="h-[150px] w-full backdrop-blur-3xl shadow-black shadow-sm md:shadow-black/40 bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
+        <div class="h-[150px] w-full backdrop-blur-3xl  bg-[#ffffff13] rounded-4xl relative md:h-[200px]  mx-auto mt-0 md:mt-6 px-[5%] flex justify-between items-center duration-700">
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn4}"/>
           <div class="pt-3 md:pt-11">

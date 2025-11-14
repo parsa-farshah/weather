@@ -701,12 +701,12 @@ function weatherApi() {
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrow}"/>
           <div class="pt-3 md:pt-11">
-            <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxt}</h2>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${getFullDateTommorow}</h3>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${tempMaxTommorow}/${tempminTommorow}</h3>
+            <h2 class="font-semibold text-lg md:text-2xl ">${tommorowTxt}</h2>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${getFullDateTommorow}</h3>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${tempMaxTommorow}/${tempminTommorow}</h3>
           </div>
         </div>
-        <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrent}</h5>
+        <h5  class="font-extrabold text-sm   capitalize md:text-2xl">${tommorowCurrent}</h5>
         </div>`;
     //////////////////////////////////////// end tomorrow
 
@@ -837,12 +837,12 @@ function weatherApi() {
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowA}"/>
           <div class="pt-3 md:pt-11">
-            <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtA}</h2>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${getFullDateTommorowA}</h3>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${tempMaxTommorowA}/${tempminTommorowA}</h3>
+            <h2 class="font-semibold text-lg md:text-2xl ">${tommorowTxtA}</h2>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${getFullDateTommorowA}</h3>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${tempMaxTommorowA}/${tempminTommorowA}</h3>
           </div>
         </div>
-        <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentA}</h5>
+        <h5  class="font-extrabold text-sm   capitalize md:text-2xl">${tommorowCurrentA}</h5>
         </div>`;
 
     // end Day after tomorrow
@@ -973,12 +973,12 @@ function weatherApi() {
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn3}"/>
           <div class="pt-3 md:pt-11">
-            <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtIn3}</h2>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${getFullDateTommorowIn3}</h3>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${tempMaxTommorowIn3}/${tempminTommorowIn3}</h3>
+            <h2 class="font-semibold text-lg md:text-2xl ">${tommorowTxtIn3}</h2>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${getFullDateTommorowIn3}</h3>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${tempMaxTommorowIn3}/${tempminTommorowIn3}</h3>
           </div>
         </div>
-        <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentIn3}</h5>
+        <h5  class="font-extrabold text-sm   capitalize md:text-2xl">${tommorowCurrentIn3}</h5>
         </div>`;
 
     $day3MaxTempDate = getFullDateTommorowA;
@@ -1108,12 +1108,12 @@ function weatherApi() {
         <div class="flex gap-4">
           <img class="w-[100px] h-[100px] md:w-[200px] md:h-[180px]" src="${$srcTomorrowIn4}"/>
           <div class="pt-3 md:pt-11">
-            <h2 class="font-semibold text-lg md:text-2xl text-white">${tommorowTxtIn4}</h2>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${getFullDateTommorowIn4}</h3>
-            <h3 class="font-semibold text-sm md:text-[16px] text-white">${tempMaxTommorowIn4}/${tempminTommorowIn4}</h3>
+            <h2 class="font-semibold text-lg md:text-2xl ">${tommorowTxtIn4}</h2>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${getFullDateTommorowIn4}</h3>
+            <h3 class="font-semibold text-sm md:text-[16px] ">${tempMaxTommorowIn4}/${tempminTommorowIn4}</h3>
           </div>
         </div>
-        <h5  class="font-extrabold text-sm  text-white capitalize md:text-2xl">${tommorowCurrentIn4}</h5>
+        <h5  class="font-extrabold text-sm   capitalize md:text-2xl">${tommorowCurrentIn4}</h5>
         </div>`;
 
     $day4MaxTempDate = getFullDateTommorowIn3;
